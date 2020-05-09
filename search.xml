@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>观《美人鱼》有感</title>
+      <link href="/2020/05/09/%E8%A7%82%E3%80%8A%E7%BE%8E%E4%BA%BA%E9%B1%BC%E3%80%8B%E6%9C%89%E6%84%9F/"/>
+      <url>/2020/05/09/%E8%A7%82%E3%80%8A%E7%BE%8E%E4%BA%BA%E9%B1%BC%E3%80%8B%E6%9C%89%E6%84%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="title"><a href="#title" class="headerlink" title="title"></a>title</h1><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日记 </tag>
+            
+            <tag> 影评 </tag>
+            
+            <tag> 美人鱼 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>后缀树(Ukkonen算法)</title>
       <link href="/2020/05/09/%E5%90%8E%E7%BC%80%E6%A0%91-Ukkonen%E7%AE%97%E6%B3%95/"/>
       <url>/2020/05/09/%E5%90%8E%E7%BC%80%E6%A0%91-Ukkonen%E7%AE%97%E6%B3%95/</url>
@@ -14,7 +37,11 @@
       
         <tags>
             
-            <tag> 后缀树 数据结构 </tag>
+            <tag> 后缀树 </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> Ukkonen </tag>
             
         </tags>
       
