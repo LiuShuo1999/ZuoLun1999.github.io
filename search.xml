@@ -4,6 +4,67 @@
   
     
     <entry>
+      <title>待看电影清单</title>
+      <link href="/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/"/>
+      <url>/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="电影清单"><a href="#电影清单" class="headerlink" title="电影清单"></a>电影清单</h1><p>可爱的骨头</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 电影 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>区间DP</title>
+      <link href="/2020/05/10/%E5%8C%BA%E9%97%B4DP/"/>
+      <url>/2020/05/10/%E5%8C%BA%E9%97%B4DP/</url>
+      
+        <content type="html"><![CDATA[<h1 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h1><p>什么是区间DP？</p><p>线性动态规划的一种扩展</p><p>在区间上进行的DP，通常是将大区间分割成小区间进行DP</p><p>在分阶段划分问题时，与阶段中元素出现的顺序和由前一阶段的哪写元素合并过来有很大关系</p><p>常见的转移方程类型</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510160243296.png" alt="image-20200510160243296"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 动态规划 </tag>
+            
+            <tag> 区间DP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>踩坑</title>
+      <link href="/2020/05/10/%E8%B8%A9%E5%9D%91/"/>
+      <url>/2020/05/10/%E8%B8%A9%E5%9D%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="错题整理"><a href="#错题整理" class="headerlink" title="错题整理"></a>错题整理</h1><p>1、注意数据范围，long long 10^18</p><p>2、注意行末空格问题</p><p>3、字符读入的换行问题</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510151447168.png" alt="image-20200510151447168"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 程序设计 </tag>
+            
+            <tag> 错题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>STL_map</title>
       <link href="/2020/05/10/STL-map/"/>
       <url>/2020/05/10/STL-map/</url>
