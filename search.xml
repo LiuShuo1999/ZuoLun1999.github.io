@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>随记</title>
+      <link href="/2020/05/11/%E9%9A%8F%E8%AE%B0/"/>
+      <url>/2020/05/11/%E9%9A%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h6 id="2020-05-11"><a href="#2020-05-11" class="headerlink" title="2020/05/11"></a>2020/05/11</h6><p>月下长饮一杯酒，怀念被写到泪流。月下卷入一莫愁，过往被写到泪流</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 随记 </tag>
+            
+            <tag> 生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>待看书籍清单</title>
       <link href="/2020/05/11/%E5%BE%85%E7%9C%8B%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/"/>
       <url>/2020/05/11/%E5%BE%85%E7%9C%8B%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/</url>
@@ -45,9 +66,9 @@
       
         <tags>
             
-            <tag> 电影 </tag>
-            
             <tag> 生活 </tag>
+            
+            <tag> 电影 </tag>
             
         </tags>
       
