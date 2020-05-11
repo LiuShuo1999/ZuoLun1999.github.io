@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liushuo1999.github.io/"/>
-  <updated>2020-05-10T15:16:03.889Z</updated>
+  <updated>2020-05-11T01:55:08.028Z</updated>
   <id>http://liushuo1999.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>待看书籍清单</title>
+    <link href="http://liushuo1999.github.io/2020/05/11/%E5%BE%85%E7%9C%8B%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/"/>
+    <id>http://liushuo1999.github.io/2020/05/11/%E5%BE%85%E7%9C%8B%E4%B9%A6%E7%B1%8D%E6%B8%85%E5%8D%95/</id>
+    <published>2020-05-11T01:54:21.000Z</published>
+    <updated>2020-05-11T01:55:08.028Z</updated>
+    
+    <content type="html"><![CDATA[<p>云边有个小卖部</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;云边有个小卖部&lt;/p&gt;
+&lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { ret
+      
+    
+    </summary>
+    
+    
+    
+      <category term="书籍" scheme="http://LiuShuo1999.github.io/tags/%E4%B9%A6%E7%B1%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>待看电影清单</title>
