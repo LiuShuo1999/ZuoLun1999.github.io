@@ -568,7 +568,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    30
+                    57
                 </div>
                 
 
@@ -591,13 +591,15 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>查询状态S中是否有编号为 i 的点</p>
-<pre class=" language-c++"><code class="language-c++">if(S & (1 << i)) return true;
-else return false;</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal"><code class="language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br></code></pre></td></tr></tbody></table></figure>
+
 <p>在状态 S 中添加编号为 i 的点</p>
-<pre class=" language-c++"><code class="language-c++">S = S | (1 << i)</code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs c++">S = S | (<span class="hljs-number"><code class="language-hljs c++">S = S | (<span class="hljs-number">1</span> << i)<br></code></pre></td></tr></tbody></table></figure>
+
 <p>在状态 S 中删除编号为 i 的点</p>
-<pre><code>if(S &amp; (1 &lt;&lt; i))
-    S = S ^ (1 &lt;&lt; i);</code></pre><script>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs plain"><code class="language-hljs plain">if(S & (1 << i))<br>	S = S ^ (1 << i);<br></code></pre></td></tr></tbody></table></figure>
+
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1110,35 +1112,31 @@ else return false;</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/05/13/%E4%BD%8D%E8%BF%90%E7%AE%97/">
+                <a href="/2020/05/14/scanf-%E8%B8%A9%E5%9D%91/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="位运算">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="scanf 踩坑">
                         
-                        <span class="card-title">位运算</span>
+                        <span class="card-title">scanf 踩坑</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            查询状态S中是否有编号为 i 的点
-if(S & (1 < i)) return true;
-else return false; {
-              img.remove();
-            });
-        
+                            scanf(“%c”,ch);这样会读入空格和回车符以下两种写法可以忽略回车符和空格
+12cin&gt;&gt;ch;scanf(cin&gt;&gt;ch;scanf(" %c",&ch);
+        document.queryS
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1147,12 +1145,15 @@ else return false; {
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
                         <span class="chip bg-color">程序设计</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%94%99%E9%A2%98/">
+                        <span class="chip bg-color">错题</span>
                     </a>
                     
                 </div>
@@ -1402,7 +1403,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">2.2k</span>&nbsp;字
             
             
             

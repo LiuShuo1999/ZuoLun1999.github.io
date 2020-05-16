@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liushuo1999.github.io/"/>
-  <updated>2020-05-13T13:48:19.647Z</updated>
+  <updated>2020-05-16T07:22:23.628Z</updated>
   <id>http://liushuo1999.github.io/</id>
   
   <author>
@@ -17,21 +17,78 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>QT-TCP通讯</title>
+    <link href="http://liushuo1999.github.io/2020/05/16/QT-TCP%E9%80%9A%E8%AE%AF/"/>
+    <id>http://liushuo1999.github.io/2020/05/16/QT-TCP%E9%80%9A%E8%AE%AF/</id>
+    <published>2020-05-16T07:21:38.000Z</published>
+    <updated>2020-05-16T07:22:23.628Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="QT" scheme="http://LiuShuo1999.github.io/tags/QT/"/>
+    
+      <category term="计网课设" scheme="http://LiuShuo1999.github.io/tags/%E8%AE%A1%E7%BD%91%E8%AF%BE%E8%AE%BE/"/>
+    
+      <category term="TCP通讯" scheme="http://LiuShuo1999.github.io/tags/TCP%E9%80%9A%E8%AE%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>scanf 踩坑</title>
+    <link href="http://liushuo1999.github.io/2020/05/14/scanf-%E8%B8%A9%E5%9D%91/"/>
+    <id>http://liushuo1999.github.io/2020/05/14/scanf-%E8%B8%A9%E5%9D%91/</id>
+    <published>2020-05-14T09:36:32.000Z</published>
+    <updated>2020-05-14T09:37:24.589Z</updated>
+    
+    <content type="html"><![CDATA[<p>scanf(“%c”,ch);这样会读入空格和回车符<br><img src="https://img-blog.csdnimg.cn/20200514173404162.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDU1Mjk2MQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">以下两种写法可以忽略回车符和空格</p><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs cpp"><span class="hljs-built_in">cin</span>&gt;&gt;ch;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string"><code class="language-hljs cpp"><span class="hljs-built_in">cin</span>&gt;&gt;ch;<br><span class="hljs-built_in">scanf</span>(<span class="hljs-string">" %c"</span>,&ch);<br></code></pre></td></tr></tbody></table></figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;scanf(“%c”,ch);这样会读入空格和回车符&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20200514173404162.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5n
+      
+    
+    </summary>
+    
+    
+    
+      <category term="程序设计" scheme="http://LiuShuo1999.github.io/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="错题" scheme="http://LiuShuo1999.github.io/tags/%E9%94%99%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>位运算</title>
     <link href="http://liushuo1999.github.io/2020/05/13/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
     <id>http://liushuo1999.github.io/2020/05/13/%E4%BD%8D%E8%BF%90%E7%AE%97/</id>
     <published>2020-05-13T13:42:38.000Z</published>
     <updated>2020-05-13T13:48:19.647Z</updated>
     
-    <content type="html"><![CDATA[<p>查询状态S中是否有编号为 i 的点</p><pre class=" language-c++"><code class="language-c++">if(S & (1 << i)) return true;else return false;</code></pre><p>在状态 S 中添加编号为 i 的点</p><pre class=" language-c++"><code class="language-c++">S = S | (1 << i)</code></pre><p>在状态 S 中删除编号为 i 的点</p><pre><code>if(S &amp; (1 &lt;&lt; i))    S = S ^ (1 &lt;&lt; i);</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<p>查询状态S中是否有编号为 i 的点</p><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal"><code class="language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br></code></pre></td></tr></tbody></table></figure><p>在状态 S 中添加编号为 i 的点</p><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs c++">S = S | (<span class="hljs-number"><code class="language-hljs c++">S = S | (<span class="hljs-number">1</span> << i)<br></code></pre></td></tr></tbody></table></figure><p>在状态 S 中删除编号为 i 的点</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs plain"><code class="language-hljs plain">if(S & (1 << i))<br>S = S ^ (1 << i);<br></code></pre></td></tr></tbody></table></figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
       
       
         &lt;p&gt;查询状态S中是否有编号为 i 的点&lt;/p&gt;
-&lt;pre class=&quot; language-c++&quot;&gt;&lt;code class=&quot;language-c++&quot;&gt;if(S &amp; (1 &lt;&lt; i)) return true;
-else return false;&lt;/code&gt;&lt;/pre&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=
       
     
     </summary>
@@ -66,25 +123,24 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <link href="http://liushuo1999.github.io/2020/05/11/%E9%9A%8F%E8%AE%B0/"/>
     <id>http://liushuo1999.github.io/2020/05/11/%E9%9A%8F%E8%AE%B0/</id>
     <published>2020-05-11T08:15:24.000Z</published>
-    <updated>2020-05-11T10:38:50.466Z</updated>
+    <updated>2020-05-14T08:01:11.882Z</updated>
     
-    <content type="html"><![CDATA[<h6 id="2020-05-11"><a href="#2020-05-11" class="headerlink" title="2020/05/11"></a>2020/05/11</h6><p>月下长饮一杯酒，怀念被写到泪流。月下卷入一莫愁，过往被写到泪流</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h6 id="2020-05-11-晴"><a href="#2020-05-11-晴" class="headerlink" title="2020/05/11  晴"></a>2020/05/11  晴</h6><p>月下长饮一杯酒，怀念被写到泪流。月下卷入一莫愁，过往被写到泪流</p><h6 id="2020-05-14-小雨"><a href="#2020-05-14-小雨" class="headerlink" title="2020/05/14   小雨"></a>2020/05/14   小雨</h6><p>浮生有梦三千场，穷尽千里诗酒荒</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h6 id=&quot;2020-05-11&quot;&gt;&lt;a href=&quot;#2020-05-11&quot; class=&quot;headerlink&quot; title=&quot;2020/05/11&quot;&gt;&lt;/a&gt;2020/05/11&lt;/h6&gt;&lt;p&gt;月下长饮一杯酒，怀念被写到泪流。月下卷入一莫愁，过往被写到泪流&lt;/p&gt;
-&lt;s
+        &lt;h6 id=&quot;2020-05-11-晴&quot;&gt;&lt;a href=&quot;#2020-05-11-晴&quot; class=&quot;headerlink&quot; title=&quot;2020/05/11  晴&quot;&gt;&lt;/a&gt;2020/05/11  晴&lt;/h6&gt;&lt;p&gt;月下长饮一杯酒，怀念被写到泪流。月下卷入一莫愁，过往被写
       
     
     </summary>
     
     
     
-      <category term="随记" scheme="http://LiuShuo1999.github.io/tags/%E9%9A%8F%E8%AE%B0/"/>
-    
       <category term="生活" scheme="http://LiuShuo1999.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="随记" scheme="http://LiuShuo1999.github.io/tags/%E9%9A%8F%E8%AE%B0/"/>
     
   </entry>
   
@@ -95,7 +151,7 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <published>2020-05-11T01:54:21.000Z</published>
     <updated>2020-05-12T01:08:11.947Z</updated>
     
-    <content type="html"><![CDATA[<h6 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h6><p>大一上：NULL</p><p>大一下：</p><p>你只是假装很努力   √</p><p>三毛，上天独宠的追梦人  √</p><p>梦里花落知多少  √</p><p>雨季不再来  √</p><p>我们仨  √</p><p>天才在左疯子在右  √</p><p>追风筝的人  √</p><p>明朝那些事  √</p><p>孝经  √</p><p>大二：</p><p>许三观卖血记  √</p><p>人间失格  √</p><p>活着  √</p><p>了凡四训  √</p><p>你今天真好看  √</p><p>谁动了我的奶酪  √</p><p>大二</p><h6 id="Will"><a href="#Will" class="headerlink" title="Will"></a>Will</h6><p>摆渡人 ing</p><p>阿勒泰的角落 </p><p>瓦尔登湖</p><p>静静的顿河</p><p>偷影子的人</p><p>杀死一只知更鸟</p><p>鲁迅文集</p><p>云边有个小卖部</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200512090808739.png" alt="image-20200512090808739"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h6 id="Done"><a href="#Done" class="headerlink" title="Done"></a>Done</h6><p>大一上：NULL</p><p>大一下：</p><p>你只是假装很努力   √</p><p>三毛，上天独宠的追梦人  √</p><p>梦里花落知多少  √</p><p>雨季不再来  √</p><p>我们仨  √</p><p>天才在左疯子在右  √</p><p>追风筝的人  √</p><p>明朝那些事  √</p><p>孝经  √</p><p>大二：</p><p>许三观卖血记  √</p><p>人间失格  √</p><p>活着  √</p><p>了凡四训  √</p><p>你今天真好看  √</p><p>谁动了我的奶酪  √</p><p>大二</p><h6 id="Will"><a href="#Will" class="headerlink" title="Will"></a>Will</h6><p>摆渡人 ing</p><p>阿勒泰的角落 </p><p>瓦尔登湖</p><p>静静的顿河</p><p>偷影子的人</p><p>杀死一只知更鸟</p><p>鲁迅文集</p><p>云边有个小卖部</p><p><img src="/.io//C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200512090808739.png" alt="image-20200512090808739"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
@@ -141,9 +197,9 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
       <category term="生活" scheme="http://LiuShuo1999.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-      <category term="生活" scheme="http://LiuShuo1999.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
       <category term="电影" scheme="http://LiuShuo1999.github.io/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+      <category term="生活" scheme="http://LiuShuo1999.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
     
   </entry>
   
@@ -154,7 +210,7 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <published>2020-05-10T08:01:14.000Z</published>
     <updated>2020-05-13T14:13:28.233Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h1><p>什么是区间DP？</p><p>线性动态规划的一种扩展</p><p>在区间上进行的DP，通常是将大区间分割成小区间进行DP</p><p>在分阶段划分问题时，与阶段中元素出现的顺序和由前一阶段的哪写元素合并过来有很大关系</p><p>常见的转移方程类型</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510160243296.png" alt="image-20200510160243296"></p><h4 id="题目：：："><a href="#题目：：：" class="headerlink" title="题目：：："></a>题目：：：</h4><p><a href="https://blog.csdn.net/mengxiang000000/article/details/73610401" target="_blank" rel="noopener">https://blog.csdn.net/mengxiang000000/article/details/73610401</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h1 id="区间DP"><a href="#区间DP" class="headerlink" title="区间DP"></a>区间DP</h1><p>什么是区间DP？</p><p>线性动态规划的一种扩展</p><p>在区间上进行的DP，通常是将大区间分割成小区间进行DP</p><p>在分阶段划分问题时，与阶段中元素出现的顺序和由前一阶段的哪写元素合并过来有很大关系</p><p>常见的转移方程类型</p><p><img src="/.io//C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510160243296.png" alt="image-20200510160243296"></p><h4 id="题目：：："><a href="#题目：：：" class="headerlink" title="题目：：："></a>题目：：：</h4><p><a href="https://blog.csdn.net/mengxiang000000/article/details/73610401" target="_blank" rel="noopener">https://blog.csdn.net/mengxiang000000/article/details/73610401</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
@@ -180,9 +236,9 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <link href="http://liushuo1999.github.io/2020/05/10/%E8%B8%A9%E5%9D%91/"/>
     <id>http://liushuo1999.github.io/2020/05/10/%E8%B8%A9%E5%9D%91/</id>
     <published>2020-05-10T07:10:02.000Z</published>
-    <updated>2020-05-10T07:14:55.166Z</updated>
+    <updated>2020-05-14T09:37:33.088Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="错题整理"><a href="#错题整理" class="headerlink" title="错题整理"></a>错题整理</h1><p>1、注意数据范围，long long 10^18</p><p>2、注意行末空格问题</p><p>3、字符读入的换行问题</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510151447168.png" alt="image-20200510151447168"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h1 id="错题整理"><a href="#错题整理" class="headerlink" title="错题整理"></a>错题整理</h1><p>1、注意数据范围，long long 10^18</p><p>2、注意行末空格问题</p><p>3、字符读入的换行问题</p><p><img src="/.io//C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200510151447168.png" alt="image-20200510151447168"></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
@@ -210,7 +266,7 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <published>2020-05-10T02:11:48.000Z</published>
     <updated>2020-05-10T03:18:19.741Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>map的基本操作函数：<br>   C++ Maps是一种关联式容器，包含“关键字/值”对<br>   begin()     返回指向map头部的迭代器<br>   clear(）     删除所有元素<br>   count()     返回指定元素出现的次数<br>   empty()     如果map为空则返回true<br>   end()       返回指向map末尾的迭代器<br>   equal_range()  返回特殊条目的迭代器对<br>   erase()     删除一个元素<br>   find()      查找一个元素<br>   get_allocator() 返回map的配置器<br>   insert()     插入元素<br>   key_comp()    返回比较元素key的函数<br>   lower_bound()  返回键值&gt;=给定元素的第一个位置<br>   max_size()    返回可以容纳的最大元素个数<br>   rbegin()     返回一个指向map尾部的逆向迭代器<br>   rend()      返回一个指向map头部的逆向迭代器<br>   size()      返回map中元素的个数<br>   swap()      交换两个map<br>   upper_bound()   返回键值&gt;给定元素的第一个位置<br>   value_comp()   返回比较元素value的函数</p><h2 id="count函数"><a href="#count函数" class="headerlink" title="count函数"></a>count函数</h2><p>返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>  map&lt;int ,string&gt; maplive;<br>  1.maplive.insert(pair&lt;int,string&gt;(102,”aclive”));<br>  2.maplive.insert(map&lt;int,string&gt;::value_type(321,”hai”));<br>  3, maplive[112]=”April”;//map中最简单最常用的插入添加！</p><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><pre class=" language-c++"><code class="language-c++">map<string,int>::iterator iter;//定义一个迭代指针iterfor(iter=M.begin(); iter!=M.end(); iter++)cout<<iter->first <<"->"<<iter->second<<endl;</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>map的基本操作函数：<br>   C++ Maps是一种关联式容器，包含“关键字/值”对<br>   begin()     返回指向map头部的迭代器<br>   clear(）     删除所有元素<br>   count()     返回指定元素出现的次数<br>   empty()     如果map为空则返回true<br>   end()       返回指向map末尾的迭代器<br>   equal_range()  返回特殊条目的迭代器对<br>   erase()     删除一个元素<br>   find()      查找一个元素<br>   get_allocator() 返回map的配置器<br>   insert()     插入元素<br>   key_comp()    返回比较元素key的函数<br>   lower_bound()  返回键值&gt;=给定元素的第一个位置<br>   max_size()    返回可以容纳的最大元素个数<br>   rbegin()     返回一个指向map尾部的逆向迭代器<br>   rend()      返回一个指向map头部的逆向迭代器<br>   size()      返回map中元素的个数<br>   swap()      交换两个map<br>   upper_bound()   返回键值&gt;给定元素的第一个位置<br>   value_comp()   返回比较元素value的函数</p><h2 id="count函数"><a href="#count函数" class="headerlink" title="count函数"></a>count函数</h2><p>返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p><h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>  map&lt;int ,string&gt; maplive;<br>  1.maplive.insert(pair&lt;int,string&gt;(102,”aclive”));<br>  2.maplive.insert(map&lt;int,string&gt;::value_type(321,”hai”));<br>  3, maplive[112]=”April”;//map中最简单最常用的插入添加！</p><h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs c++"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator iter;<span class="hljs-comment">//定义一个迭代指针iter</span><br><span class="hljs-keyword">for</span>(iter=M.<span class="hljs-built_in">begin</span>(); iter!=M.<span class="hljs-built_in">end</span>(); iter++)<br><span class="hljs-built_in">cout</span>&lt;&lt;iter-&gt;first &lt;&lt;<span class="hljs-string">"-&gt;"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="hljs-built_in"><code class="language-hljs c++"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator iter;<span class="hljs-comment">//定义一个迭代指针iter</span><br><span class="hljs-keyword">for</span>(iter=M.<span class="hljs-built_in">begin</span>(); iter!=M.<span class="hljs-built_in">end</span>(); iter++)<br><span class="hljs-built_in">cout</span>&lt;&lt;iter-&gt;first &lt;&lt;<span class="hljs-string">"-&gt;"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;<br></code></pre></td></tr></tbody></table></figure><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
@@ -236,7 +292,7 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <published>2020-05-09T11:20:33.000Z</published>
     <updated>2020-05-11T02:18:17.560Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="2020-05-09"><a href="#2020-05-09" class="headerlink" title="2020/05/09"></a>2020/05/09</h2><p>没看之前，一直以为是搞笑无厘头电影。</p><p>但是呢，在观影过程中星爷一直在向我们传递以下两种观点：</p><p>  1、提倡保护生态</p><p>  2、 反对“金钱至上”</p><blockquote><p> 突然想到一个点，插播一下，特别郁闷：为什么一部电影的精髓部分，像这个的生态、金钱至上论啊，这种反而倒是成为不了人们的饭后谈资，倒是一些搞笑无厘头的地方容易被称之为所谓的“名场面”。</p></blockquote><p>下面是看到的精彩的评论</p><p>场景:</p><p>若兰和刘轩在泳池见面，为了驱赶刘轩身边女孩们，将一块手表抛出并说谁拿到给谁。</p><p>映射:</p><p>女孩们并不认识手表的价值一普通 人不知道什么东西是真的值钱。</p><p>刘轩说这手表也就值800万一”也就” 表现了人拥有更多财富后对价值的藐视。</p><p>女孩们得知价值后都去抢手表了一普通人的对既得利益的总是， 以及随大流的盲从。</p><p>刘轩评价道“她们都是为了赚钱努力奋斗的年青人”一拥有特权的幸幸者对 “商品拜物主义”的认可。</p><blockquote><p>看到这位的评论，我突然想到高中做的语文阅读理解。hhhhhhhhhhhhhhh</p></blockquote><h2 id="触发其他的想法"><a href="#触发其他的想法" class="headerlink" title="触发其他的想法"></a>触发其他的想法</h2><p>有时候我总是感觉一直在忙碌，很少有时间停下来思考。</p><blockquote><p>以前我会觉得，看一部电影，哎，要1个多小时，会感觉不如去看会书什么什么的。其实不会，它也会带来别样的深思</p></blockquote><p>于是，知乎搜了一下“做什么是浪费时间”</p><p><img src="C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200509225759666.png" alt="image-20200509225759666"></p><p>偶然想起，24枚金币时间管理法的创始人，艾力。</p><p>无限的刷微博、刷朋友圈、自己给自己点个赞。一分一秒流逝后，又剩下什么呢？</p><blockquote><p>所以，在一段时间之后，你再也想不起你做过什么，到底带来了什么，这样的事情应该是无意义的事情吧</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<h2 id="2020-05-09"><a href="#2020-05-09" class="headerlink" title="2020/05/09"></a>2020/05/09</h2><p>没看之前，一直以为是搞笑无厘头电影。</p><p>但是呢，在观影过程中星爷一直在向我们传递以下两种观点：</p><p>  1、提倡保护生态</p><p>  2、 反对“金钱至上”</p><blockquote><p> 突然想到一个点，插播一下，特别郁闷：为什么一部电影的精髓部分，像这个的生态、金钱至上论啊，这种反而倒是成为不了人们的饭后谈资，倒是一些搞笑无厘头的地方容易被称之为所谓的“名场面”。</p></blockquote><p>下面是看到的精彩的评论</p><p>场景:</p><p>若兰和刘轩在泳池见面，为了驱赶刘轩身边女孩们，将一块手表抛出并说谁拿到给谁。</p><p>映射:</p><p>女孩们并不认识手表的价值一普通 人不知道什么东西是真的值钱。</p><p>刘轩说这手表也就值800万一”也就” 表现了人拥有更多财富后对价值的藐视。</p><p>女孩们得知价值后都去抢手表了一普通人的对既得利益的总是， 以及随大流的盲从。</p><p>刘轩评价道“她们都是为了赚钱努力奋斗的年青人”一拥有特权的幸幸者对 “商品拜物主义”的认可。</p><blockquote><p>看到这位的评论，我突然想到高中做的语文阅读理解。hhhhhhhhhhhhhhh</p></blockquote><h2 id="触发其他的想法"><a href="#触发其他的想法" class="headerlink" title="触发其他的想法"></a>触发其他的想法</h2><p>有时候我总是感觉一直在忙碌，很少有时间停下来思考。</p><blockquote><p>以前我会觉得，看一部电影，哎，要1个多小时，会感觉不如去看会书什么什么的。其实不会，它也会带来别样的深思</p></blockquote><p>于是，知乎搜了一下“做什么是浪费时间”</p><p><img src="/.io//C:%5CUsers%5Clenovo%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200509225759666.png" alt="image-20200509225759666"></p><p>偶然想起，24枚金币时间管理法的创始人，艾力。</p><p>无限的刷微博、刷朋友圈、自己给自己点个赞。一分一秒流逝后，又剩下什么呢？</p><blockquote><p>所以，在一段时间之后，你再也想不起你做过什么，到底带来了什么，这样的事情应该是无意义的事情吧</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
