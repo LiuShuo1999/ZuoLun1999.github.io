@@ -568,7 +568,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    57
+                    30
                 </div>
                 
 
@@ -591,15 +591,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>查询状态S中是否有编号为 i 的点</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal"><code class="language-hljs c++"><span class="hljs-keyword">if</span>(S &amp; (<span class="hljs-number">1</span> &lt;&lt; i)) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br></code></pre></td></tr></tbody></table></figure>
-
+<pre class=" language-c++"><code class="language-c++">if(S & (1 << i)) return true;
+else return false;</code></pre>
 <p>在状态 S 中添加编号为 i 的点</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs c++">S = S | (<span class="hljs-number"><code class="language-hljs c++">S = S | (<span class="hljs-number">1</span> << i)<br></code></pre></td></tr></tbody></table></figure>
-
+<pre class=" language-c++"><code class="language-c++">S = S | (1 << i)</code></pre>
 <p>在状态 S 中删除编号为 i 的点</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs plain"><code class="language-hljs plain">if(S & (1 << i))<br>	S = S ^ (1 << i);<br></code></pre></td></tr></tbody></table></figure>
-
-<script>
+<pre><code>if(S &amp; (1 &lt;&lt; i))
+    S = S ^ (1 &lt;&lt; i);</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1129,8 +1127,10 @@
                     <div class="summary block-with-text">
                         
                             scanf(“%c”,ch);这样会读入空格和回车符以下两种写法可以忽略回车符和空格
-12cin&gt;&gt;ch;scanf(cin&gt;&gt;ch;scanf(" %c",&ch);
-        document.queryS
+cin>>ch;
+scanf(" %c",&amp;ch);
+
+        document.querySelectorAll('.github-em
                         
                     </div>
                     <div class="publish-info">
@@ -1403,7 +1403,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">4.9k</span>&nbsp;字
             
             
             

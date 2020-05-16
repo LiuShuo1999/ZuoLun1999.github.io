@@ -572,14 +572,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    462
+                    352
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -597,7 +597,9 @@
                 <h1 id="map"><a href="#map" class="headerlink" title="map"></a>map</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><p>map的基本操作函数：<br>   C++ Maps是一种关联式容器，包含“关键字/值”对<br>   begin()     返回指向map头部的迭代器<br>   clear(）     删除所有元素<br>   count()     返回指定元素出现的次数<br>   empty()     如果map为空则返回true<br>   end()       返回指向map末尾的迭代器<br>   equal_range()  返回特殊条目的迭代器对<br>   erase()     删除一个元素<br>   find()      查找一个元素<br>   get_allocator() 返回map的配置器<br>   insert()     插入元素<br>   key_comp()    返回比较元素key的函数<br>   lower_bound()  返回键值&gt;=给定元素的第一个位置<br>   max_size()    返回可以容纳的最大元素个数<br>   rbegin()     返回一个指向map尾部的逆向迭代器<br>   rend()      返回一个指向map头部的逆向迭代器<br>   size()      返回map中元素的个数<br>   swap()      交换两个map<br>   upper_bound()   返回键值&gt;给定元素的第一个位置<br>   value_comp()   返回比较元素value的函数</p>
 <h2 id="count函数"><a href="#count函数" class="headerlink" title="count函数"></a>count函数</h2><p>返回的是被查找元素的个数。如果有，返回1；否则，返回0。注意，map中不存在相同元素，所以返回值只能是1或0。</p>
 <h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><p>  map&lt;int ,string&gt; maplive;<br>  1.maplive.insert(pair&lt;int,string&gt;(102,”aclive”));<br>  2.maplive.insert(map&lt;int,string&gt;::value_type(321,”hai”));<br>  3, maplive[112]=”April”;//map中最简单最常用的插入添加！</p>
-<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs c++"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator iter;<span class="hljs-comment">//定义一个迭代指针iter</span><br><span class="hljs-keyword">for</span>(iter=M.<span class="hljs-built_in">begin</span>(); iter!=M.<span class="hljs-built_in">end</span>(); iter++)<br><span class="hljs-built_in">cout</span>&lt;&lt;iter-&gt;first &lt;&lt;<span class="hljs-string">"-&gt;"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="hljs-built_in"><code class="language-hljs c++"><span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;::iterator iter;<span class="hljs-comment">//定义一个迭代指针iter</span><br><span class="hljs-keyword">for</span>(iter=M.<span class="hljs-built_in">begin</span>(); iter!=M.<span class="hljs-built_in">end</span>(); iter++)<br><span class="hljs-built_in">cout</span>&lt;&lt;iter-&gt;first &lt;&lt;<span class="hljs-string">"-&gt;"</span>&lt;&lt;iter-&gt;second&lt;&lt;<span class="hljs-built_in">endl</span>;<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><pre class=" language-c++"><code class="language-c++">map<string,int>::iterator iter;//定义一个迭代指针iter
+for(iter=M.begin(); iter!=M.end(); iter++)
+cout<<iter->first <<"->"<<iter->second<<endl;</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1429,7 +1431,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">2.2k</span>&nbsp;字
+                class="white-color">4.9k</span>&nbsp;字
             
             
             
