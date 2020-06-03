@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="位运算, 左轮">
+    <meta name="keywords" content="动态规划-二, 左轮">
     <meta name="description" content="欢迎">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>位运算 | 左轮</title>
+    <title>动态规划-二 | 左轮</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -416,12 +416,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">位运算</h1>
+                    <h1 class="description center-align post-title">动态规划-二</h1>
                 </div>
             </div>
         </div>
@@ -538,8 +538,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">程序设计</span>
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                <span class="chip bg-color">动态规划</span>
                             </a>
                         
                     </div>
@@ -554,28 +554,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-13
+                    2020-05-31
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-13
+                    2020-06-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    30
+                    946
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -590,14 +590,105 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>查询状态S中是否有编号为 i 的点</p>
-<pre class=" language-c++"><code class="language-c++">if(S & (1 << i)) return true;
-else return false;</code></pre>
-<p>在状态 S 中添加编号为 i 的点</p>
-<pre class=" language-c++"><code class="language-c++">S = S | (1 << i)</code></pre>
-<p>在状态 S 中删除编号为 i 的点</p>
-<pre><code>if(S &amp; (1 &lt;&lt; i))
-    S = S ^ (1 &lt;&lt; i);</code></pre><script>
+                <h1 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h1><h4 id="动态规划解题步骤："><a href="#动态规划解题步骤：" class="headerlink" title="动态规划解题步骤："></a>动态规划解题步骤：</h4><ol>
+<li>状态定义 </li>
+<li>状态转移方程 </li>
+<li>状态初始化 </li>
+<li>输出答案</li>
+</ol>
+<h4 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h4><p>有 N 件物品和一个容量为 V 的背包。第 i 件物品体积是Wi，价值是Vi。 求解将哪些物品装入背包可使这些物品的体积总和不超过背包容量，且 总价值最大 。</p>
+<p>特点：每种物品仅有一件，可以选择放或不放 (对应 1 或 0)。</p>
+<p>状态定义f[i][j]表示前i件物品，现在容量是j，有两种解释：</p>
+<ul>
+<li>前i件物品，容量至多为j。</li>
+<li>前i件物品，容量恰好为j。</li>
+</ul>
+<p>状态转移方程：f[i][j] = max(f[i-1][j],f[i-1][j-w[i]]+v[i]);</p>
+<ul>
+<li>前一个是不取第i件物品；</li>
+<li>后一个状态时取第i件物品，此时需要从前i-1件物品容量是j-w[i]处转移过来</li>
+</ul>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> V<span class="token punctuation">,</span> N<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//0-1</span>
+<span class="token comment" spellcheck="true">//容积恰好为j</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span>inf<span class="token punctuation">;</span>
+f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//容积至多为为j</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> V<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>滚动数组,因为每次循环只用到了i-1层和第i层，所以采用滚动数组完美解决</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//0-1滚动数组</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> V<span class="token punctuation">;</span> j <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        f<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            f<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h4><p>有 N 种物品和一个容量为 V 的背包。第 i 件物品体积是Wi，价值是Vi。 求解将哪些物品装入背包可使这些物品的体积总和不超过背包容量，且 总价值最大 。</p>
+<p>不同点是这里的物品可以取无数次；</p>
+<p>极简代码。</p>
+<p>这里也是采用的滚动数组，与上面不同的是这里的j是正序；</p>
+<p>原因：上面逆序的原因是为了避免某一个物品被重复的选择，而这里的正序则恰好可以弥补这一个点；</p>
+<ul>
+<li>现在完全背包考虑“加选一个物品”时，正需要一个可能已选入第 i 种物 品的子结果 f[i][ j-w[i]]，所以必需采用正序循环。</li>
+</ul>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//完全背包问题</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> V<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        f<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            f<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>j <span class="token operator">-</span> w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h4><p>有 N 件物品和一个容量为 V 的背包。第 i 件物品体积是 Wi，价值是Vi， 有 Ci 件可用，求解将哪些物品装入背包可使这些物品的体积总和不超过 背包容量，且总价值最大</p>
+<p>特点：每种物品有 有限件</p>
+<p>思路：将其转化为0-1背包问题解决；</p>
+<p>思考：如果存在7件某物品，则可以拆分为3件2件1件共三堆，相当于0-1背包问题的三个独立的物品；</p>
+<p>上面的思考用到了二进制拆分；</p>
+<p>如果是1011则需要拆分为1件2件4件4件共四堆（注意其中最后一个4相当于偏移量！！！</p>
+<p>拆分代码：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> cnt<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> t <span class="token operator">=</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>k<span class="token operator">&lt;=</span>t<span class="token punctuation">;</span>k<span class="token operator">&lt;&lt;=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+        vv<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token operator">*</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        ww<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> k<span class="token operator">*</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        t <span class="token operator">-</span><span class="token operator">=</span> k<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>t <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+        vv<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token operator">*</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        ww<span class="token punctuation">[</span>cnt<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token operator">*</span>w<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>        
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h4><h4 id="超大背包"><a href="#超大背包" class="headerlink" title="超大背包"></a>超大背包</h4><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -640,7 +731,7 @@ else return false;</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://LiuShuo1999.github.io/2020/05/13/%E4%BD%8D%E8%BF%90%E7%AE%97/">http://LiuShuo1999.github.io/2020/05/13/%E4%BD%8D%E8%BF%90%E7%AE%97/</a>
+                    <a href="http://LiuShuo1999.github.io/2020/05/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%BA%8C/">http://LiuShuo1999.github.io/2020/05/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%BA%8C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -678,8 +769,8 @@ else return false;</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">程序设计</span>
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                                    <span class="chip bg-color">动态规划</span>
                                 </a>
                             
                         </div>
@@ -1110,33 +1201,36 @@ else return false;</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/05/14/scanf-%E8%B8%A9%E5%9D%91/">
+                <a href="/2020/05/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%BA%8C/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="scanf 踩坑">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="动态规划-二">
                         
-                        <span class="card-title">scanf 踩坑</span>
+                        <span class="card-title">动态规划-二</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            scanf(“%c”,ch);这样会读入空格和回车符以下两种写法可以忽略回车符和空格
-cin>>ch;
-scanf(" %c",&amp;ch);
+                            背包问题动态规划解题步骤：
+状态定义 
+状态转移方程 
+状态初始化 
+输出答案
 
-        document.querySelectorAll('.github-em
+0-1背包问题有 N 件物品和一个容量为 V 的背包。第 i 件物品体积是Wi，价值是Vi。 求解将哪些物品装入背包可使这些物品的体积总和不超过背包容量，且 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1145,15 +1239,12 @@ scanf(" %c",&amp;ch);
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">程序设计</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%94%99%E9%A2%98/">
-                        <span class="chip bg-color">错题</span>
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
                     </a>
                     
                 </div>
@@ -1167,30 +1258,24 @@ scanf(" %c",&amp;ch);
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/05/11/T/">
+                <a href="/2020/05/27/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E4%B8%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="To">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="动态规划(一)">
                         
-                        <span class="card-title">To</span>
+                        <span class="card-title">动态规划(一)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-  
-  
-    birth
-    
-  
-  83cb0362696665ab864ce1998f50cdcae6e8f2204306c6924a163b5a3776530eb53fecbee382287f1e99bc758e272
+                            动态规划两种基本思想：带备忘的自顶向下法（top-down with memoization）：按自然递归编写过程，保存每个子问题的解（通常保存在一个数组 或散列表中）。当需要一个子问题的解时，首先检查是否已经保存 过此解，如果是则直接返回
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-27
                             </span>
                         <span class="publish-author">
                             
@@ -1199,6 +1284,14 @@ scanf(" %c",&amp;ch);
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">动态规划</span>
+                    </a>
+                    
                 </div>
                 
             </div>
