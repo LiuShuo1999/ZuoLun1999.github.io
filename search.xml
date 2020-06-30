@@ -8,7 +8,7 @@
       <link href="/2020/06/22/%E3%80%8A%E5%AF%84%E7%94%9F%E8%99%AB%E3%80%8B%E6%8A%8A%E8%B5%A4%E8%A3%B8%E8%A3%B8%E7%9A%84%E7%8E%B0%E5%AE%9E%E6%92%95%E7%BB%99%E4%BD%A0%E7%9C%8B/"/>
       <url>/2020/06/22/%E3%80%8A%E5%AF%84%E7%94%9F%E8%99%AB%E3%80%8B%E6%8A%8A%E8%B5%A4%E8%A3%B8%E8%A3%B8%E7%9A%84%E7%8E%B0%E5%AE%9E%E6%92%95%E7%BB%99%E4%BD%A0%E7%9C%8B/</url>
       
-        <content type="html"><![CDATA[<p>2020-06-22</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>很棒！！！</li><li>这真的是一部让人看了回味很久的电影，不愧是戛纳电影节获奖神作。<h4 id="把赤裸的现实撕给你看"><a href="#把赤裸的现实撕给你看" class="headerlink" title="把赤裸的现实撕给你看"></a>把赤裸的现实撕给你看</h4>巧妙的是，今天考完马原。让我联想到了阶级斗争hhh。<h4 id="杂言"><a href="#杂言" class="headerlink" title="杂言"></a>杂言</h4>总会有很多的作品，像是影视剧、书刊等等，去抨击社会，抨击现实。现实很骨感。可能我还没步入社会，了解不深。总觉得人和人的交往要多一些真诚，少一些套路，少一些欺骗。对，这样的确会被认为是天真，甚至是童真。可是这并不是不明辨是非。那不被坑第二次不就行了吗，hhh，简简单单最好。<h4 id="一点体会"><a href="#一点体会" class="headerlink" title="一点体会"></a>一点体会</h4>总感觉结局还是太完美了。再丧一点，来个欧亨利式的结尾，那就妙极了。<h1 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h1>昨天是人生一个里程碑式的日子。<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2>在本网站里面有篇”To”的博客。密码只有两个人知道。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<p>2020-06-22</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul><li>很棒！！！</li><li>这真的是一部让人看了回味很久的电影，不愧是戛纳电影节获奖神作。<h4 id="把赤裸的现实撕给你看"><a href="#把赤裸的现实撕给你看" class="headerlink" title="把赤裸的现实撕给你看"></a>把赤裸的现实撕给你看</h4>巧妙的是，今天考完马原。让我联想到了阶级斗争hhh。<h4 id="杂言"><a href="#杂言" class="headerlink" title="杂言"></a>杂言</h4>总会有很多的作品，像是影视剧、书刊等等，去抨击社会，抨击现实。现实很骨感。可能我还没步入社会，了解不深。总觉得人和人的交往要多一些真诚，少一些套路，少一些欺骗。对，这样的确会被认为是天真，甚至是童真。可是这并不是不明辨是非。那不被坑第二次不就行了吗，hhh，简简单单最好。<h4 id="一点体会"><a href="#一点体会" class="headerlink" title="一点体会"></a>一点体会</h4>总感觉结局还是太完美了。再丧一点，来个欧亨利式的结尾，那就妙极了。<h1 id="FLAG"><a href="#FLAG" class="headerlink" title="FLAG"></a>FLAG</h1>昨天是人生一个里程碑式的日子。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       
@@ -258,9 +258,9 @@
       
         <tags>
             
-            <tag> 电影 </tag>
-            
             <tag> 生活 </tag>
+            
+            <tag> 电影 </tag>
             
         </tags>
       
@@ -348,11 +348,11 @@
       
         <tags>
             
-            <tag> 生活 </tag>
-            
             <tag> 日记 </tag>
             
             <tag> 影评 </tag>
+            
+            <tag> 生活 </tag>
             
         </tags>
       
