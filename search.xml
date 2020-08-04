@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>10mins解决百度网盘限速问题</title>
+      <link href="/2020/08/04/10mins%E8%A7%A3%E5%86%B3%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E9%99%90%E9%80%9F%E9%97%AE%E9%A2%98/"/>
+      <url>/2020/08/04/10mins%E8%A7%A3%E5%86%B3%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E9%99%90%E9%80%9F%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="10mins配置IDM解决百度网盘限速问题"><a href="#10mins配置IDM解决百度网盘限速问题" class="headerlink" title="10mins配置IDM解决百度网盘限速问题"></a>10mins配置IDM解决百度网盘限速问题</h1><h2 id="IDM为什么下载速度快"><a href="#IDM为什么下载速度快" class="headerlink" title="IDM为什么下载速度快"></a>IDM为什么下载速度快</h2><p>IDM下载器，是全称“Internet Download Manager”的缩写，插件商店中名为IDM Integration Module。<br>IDM是海内外都非常受欢迎的一款下载管理软件。<br>这是多线程下载器：</p><ul><li><p>一般浏览器都是单线程下载，就是一个人搬东西。</p></li><li><p>而多线程下载器则是：N个人一起搬1个东西，最后合到一起。</p><p>IDM最多可以“32个人一块搬东西”，所以速度自然会很快。</p></li></ul><h3 id="具体的安装教程如下："><a href="#具体的安装教程如下：" class="headerlink" title="具体的安装教程如下："></a>具体的安装教程如下：</h3><h4 id="安装IDM"><a href="#安装IDM" class="headerlink" title="安装IDM"></a>安装IDM</h4><p>1.安装</p><pre><code>链接: https://pan.baidu.com/s/1zucaGEkX2kRpMN_PKIr6vQ 提取码: arhd</code></pre><p>2.配置</p><p>点击上面的【选项】</p><p><img src="https://s1.ax1x.com/2020/08/04/awO96f.png" alt=""></p><p>选择上面的【下载】标签页，在下面的User-Agent for manually added downloads输入“<strong>netdisk;P2SP;2.2.60.26</strong>”然后点击【确定】</p><p><img src="https://s1.ax1x.com/2020/08/04/awOCX8.png" alt="phoyo"></p><p>选择上面的【连接】标签页，选择【新建】</p><p><img src="https://s1.ax1x.com/2020/08/04/awOinS.png" alt=""></p><p>在弹出的窗口里面输入”<strong>*.baidupcs.com</strong>“将前缀切换为https://，最大连接数更改为2。</p><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://s1.ax1x.com/2020/08/04/awjMo4.png" alt=""></h4><h4 id="安装油猴"><a href="#安装油猴" class="headerlink" title="安装油猴"></a>安装油猴</h4><p>地址：</p><pre><code>https://www.extfans.com/productivity/dhdgffkkebhmkfjojejmpbldmpobfkfo/</code></pre><p><img src="https://mmbiz.qpic.cn/mmbiz_png/D1XlU0QfU3HB5grQ4Ts4r2pibU9SG4TjEmUnqayCyqVFY4wojr4BXOWic0gjT3qxSJEqkS1cVFpePhRp3JsqdzOg/640?wx_fmt=png&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""></p><h4 id="安装’百度网盘直链提取‘"><a href="#安装’百度网盘直链提取‘" class="headerlink" title="安装’百度网盘直链提取‘"></a>安装’百度网盘直链提取‘</h4><p>地址：</p><pre><code>https://greasyfork.org/zh-CN/scripts/403991-百度网盘直链提取-多选</code></pre><p>油猴配置</p><p>打开chrome里面的扩展程序</p><p><img src="https://s1.ax1x.com/2020/08/04/awvT4H.png" alt=""></p><p>打开上面的【开发者模式】，然后将下载的后缀为crx的文件拖入即可</p><p><img src="https://s1.ax1x.com/2020/08/04/awvoUe.png" alt=""></p><h4 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h4><p>将要下载的文件保存到自己的网盘</p><p>注意要在chrome浏览器里面打开自己的网盘</p><p>选中某一个文件（比如这个SPSS 24，然后点击上面的下载，注意这里的下载是绿色的！！！如果是绿色的那就配置成功了！</p><p><img src="https://s1.ax1x.com/2020/08/04/awxjzR.png" alt=""></p><p>在弹出的窗口赋值下载链接</p><p><img src="https://s1.ax1x.com/2020/08/04/awzWTO.png" alt=""></p><p>在IDM中新建任务<br><img src="https://s1.ax1x.com/2020/08/04/a0SIET.png" alt=""><br>配置一下保存的地址<br><img src="https://s1.ax1x.com/2020/08/04/a0SCXq.png" alt=""><br>肉眼可见的下载速度！<br><img src="https://s1.ax1x.com/2020/08/04/a0Sin0.png" alt=""></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> IDM 百度网盘 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《寄生虫》把赤裸裸的现实撕给你看</title>
       <link href="/2020/06/22/%E3%80%8A%E5%AF%84%E7%94%9F%E8%99%AB%E3%80%8B%E6%8A%8A%E8%B5%A4%E8%A3%B8%E8%A3%B8%E7%9A%84%E7%8E%B0%E5%AE%9E%E6%92%95%E7%BB%99%E4%BD%A0%E7%9C%8B/"/>
       <url>/2020/06/22/%E3%80%8A%E5%AF%84%E7%94%9F%E8%99%AB%E3%80%8B%E6%8A%8A%E8%B5%A4%E8%A3%B8%E8%A3%B8%E7%9A%84%E7%8E%B0%E5%AE%9E%E6%92%95%E7%BB%99%E4%BD%A0%E7%9C%8B/</url>
@@ -246,7 +265,7 @@
       <link href="/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/"/>
       <url>/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/</url>
       
-        <content type="html"><![CDATA[<h1 id="电影清单"><a href="#电影清单" class="headerlink" title="电影清单"></a>电影清单</h1><p>可爱的骨头</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h1 id="电影清单"><a href="#电影清单" class="headerlink" title="电影清单"></a>电影清单</h1><p>《星际穿越》<br>《返老还童》</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
