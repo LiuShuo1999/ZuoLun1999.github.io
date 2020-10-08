@@ -1,0 +1,1814 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>QT-TCP通讯 - 左轮</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="[toc]
+实现内容
+多人聊天室
+文件传输
+多人语音聊..."> 
+  
+  <meta name="author" content="LiuShuo"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: '',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="左轮" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">QT-TCP通讯</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">QT-TCP通讯</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>五月 16, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>44887</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <p>[toc]</p>
+<h4 id="实现内容"><a href="#实现内容" class="headerlink" title="实现内容"></a>实现内容</h4><ul>
+<li>多人聊天室</li>
+<li>文件传输</li>
+<li>多人语音聊天室</li>
+</ul>
+<h4 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h4><h5 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h5><p><img   class="lazyload" data-original="/.io//C:%5CUsers%5Clenovo%5CDesktop%5C12.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="服务器"></p>
+<h5 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h5><p><img   class="lazyload" data-original="/.io//C:%5CUsers%5Clenovo%5CDesktop%5C12.png" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  alt="12"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><h5 id="服务器端-1"><a href="#服务器端-1" class="headerlink" title="服务器端"></a>服务器端</h5><p>注 pro文件需要添加</p>
+<p><code>QT       += core gui network multimedia</code></p>
+<h6 id="serverwidget-h"><a href="#serverwidget-h" class="headerlink" title="serverwidget.h"></a>serverwidget.h</h6><pre><code class="cpp">#ifndef SERVERWIDGET_H
+#define SERVERWIDGET_H
+
+#include &lt;QWidget&gt;
+#include &lt;QTcpServer&gt;
+#include &lt;QTcpSocket&gt;
+#include &lt;QVector&gt;
+
+#include &lt;QFile&gt;
+#include &lt;QTimer&gt;//计时器
+
+#include &lt;QAudio&gt;//一下这五个是QT处理音频的库
+#include &lt;QAudioFormat&gt;
+#include &lt;QAudioInput&gt;
+#include &lt;QAudioOutput&gt;
+#include &lt;QIODevice&gt;
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class ServerWidget; }
+QT_END_NAMESPACE
+
+struct people{
+    QString pip;
+    QString name;
+    int pport;
+};
+
+
+/*********************************************/
+const char file_flag = &#39;F&#39;;
+const char head_flag = &#39;H&#39;;
+const QString MSG_flag = &quot;MSG##&quot;;
+const char sys_flag = &#39;!&#39;;
+const char people_new = &#39;N&#39;;//新的用户到来  姓名传输过来
+
+const char to_c_people_new = &#39;P&#39;;//新的用户到来  传给客户端
+const char to_c_people_del = &#39;D&#39;;//新的用户离开  传给客户端
+
+/*********************************************/
+
+
+class ServerWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    ServerWidget(QWidget *parent = nullptr);
+    ~ServerWidget();
+
+private slots:
+    void on_pushButton_clicked();
+
+    //
+    void on_ButtonSelect_clicked();
+    void on_ButtonSend_clicked();
+
+    void sendData(QTcpSocket* tcpSocket, int i);//发送文件数据
+
+    void onReadyRead();
+    void readyReadSlot();//receive
+
+private:
+    Ui::ServerWidget *ui;
+
+    QTcpServer *tcpserver;//监听套接字
+    QVector&lt;QTcpSocket *&gt; socketarr;
+
+    int count = 0;
+    QFile  file[1024];//文件对象
+    QString fileName; //文件名字
+    QString filePath; //文件路径
+    qint64 fileSize;//文件大小
+    qint64 sendSize[1024];//已发送文件大小
+
+        QTimer timer[1024];//定时器  黏包  头部----文件体
+
+    QFile  file2;//文件对象
+    QString fileName2;//文件名字
+    qint64 fileSize2;//文件大小
+    qint64 recvSize2;//已发送文件大小
+
+    bool readyFile;
+
+    /*********************************************/
+    QVector&lt;people&gt; plist;
+    /*********************************************/
+
+    /*音频*/
+    QVector&lt;QTcpSocket *&gt; phonetcpsocket;
+    QTcpServer *phonetcpserver;
+    int phone_count=0;
+    QAudioInput *input;//音频采集
+    QIODevice   *inputDevice;//播放
+    QAudioOutput *output;
+    QIODevice   *outputDevice;
+
+
+
+protected:
+    void paintEvent(QPaintEvent *event);
+};
+struct video{
+    char audiodata[1024];
+    int lens;
+};
+#endif // SERVERWIDGET_H</code></pre>
+<h6 id="serverwidget-cpp"><a href="#serverwidget-cpp" class="headerlink" title="serverwidget.cpp"></a>serverwidget.cpp</h6><pre><code class="cpp">#include &quot;serverwidget.h&quot;
+#include &quot;ui_serverwidget.h&quot;
+#include &lt;QFileDialog&gt;//选择文件的对话框
+#include &lt;QDebug&gt;//用于debug
+#include &lt;QFileInfo&gt;//用于获取文件信息
+#include &lt;QMap&gt;
+#include &lt;QStyleFactory&gt;
+#include &lt;QPainter&gt;
+#include &lt;QMessageBox&gt;
+
+ServerWidget::ServerWidget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::ServerWidget)
+{
+    ui-&gt;setupUi(this);
+    resize(1000, 600);
+    tcpserver = NULL;
+    recvSize2 = 0;
+    readyFile = false;
+    tcpserver = new QTcpServer(this);   //监听套接字
+
+    ui-&gt;pushButton-&gt;setStyleSheet(&quot;background-color: rgb(175,238,238)&quot;);
+    ui-&gt;textEdit_online-&gt;setStyleSheet(&quot;background-color: rgba(255, 0, 255, 60)&quot;);
+    ui-&gt;textEdit-&gt;setStyleSheet(&quot;background-color: rgba(0, 255, 255, 60)&quot;);
+    ui-&gt;textEditFile-&gt;setStyleSheet(&quot;background-color: rgba(255, 0, 255, 60)&quot;);
+    ui-&gt;progressBar-&gt;hide();
+
+    for(int i=0;i&lt;1024;i++)sendSize[i]=0;
+
+}
+
+void ServerWidget::paintEvent(QPaintEvent *)
+{
+    QPainter p(this);
+    p.drawPixmap(0, 0, width(), height(), QPixmap(&quot;../src/b3.jpg&quot;));
+}
+
+ServerWidget::~ServerWidget()
+{
+    delete ui;
+}
+
+//聊天室按钮
+void ServerWidget::on_pushButton_clicked()
+{
+    //获取端口号
+    if(ui-&gt;lineEdit-&gt;text()==&quot;&quot;)return;
+    qint16 port = ui-&gt;lineEdit-&gt;text().toInt();
+
+    //监听
+    tcpserver-&gt;listen(QHostAddress::Any,port);
+
+    setWindowTitle(&quot;服务器：&quot;+ui-&gt;lineEdit-&gt;text());
+    ui-&gt;textEdit-&gt;setText(&quot;聊天室创建成功！&quot;);
+
+    //如果新进客户端与服务器连接，tcpServer会自动触发newConnection()
+    connect(tcpserver,&amp;QTcpServer::newConnection,
+            [=]()
+                {
+                     count++;
+                     ui-&gt;labelonline-&gt;setText(&quot;当前在线人数：&quot;+QString::number(count));
+                     //取出socket
+                     QTcpSocket *socket;
+                     socket = tcpserver-&gt;nextPendingConnection();
+                     //加入数组
+                     socketarr.push_back(socket);
+
+                     QString ip = socket-&gt;peerAddress().toString();//取出ip
+
+
+                     ip = ip.right(ip.length()-7);    //删除前缀
+                     qint16 port = socket-&gt;peerPort();//取出端口
+
+                     /***********************************加入新的用户**************************************/
+                     people per;
+                     per.pip = ip;
+                     per.pport = port;
+                     per.name = &quot;NULL&quot;;
+                     plist.push_back(per);
+                     /***********************************************************************************/
+
+                     //组包提示信息
+                     QString temp = QString(&quot;[%1%2]:进入聊天室&quot;).arg(ip).arg(port);
+                     ui-&gt;textEdit_online-&gt;append(ip);//增加显示当前所有的用户ip
+                     ui-&gt;textEdit-&gt;append(temp);
+                     temp = MSG_flag+temp;
+                     //广播新进用户
+                     for(int i=0;i&lt;count;i++){
+                         socketarr[i]-&gt;write(temp.toUtf8().data());
+                     }
+
+
+
+                     connect(socket,&amp;QTcpSocket::readyRead,
+                             [=]()
+                                {
+                                    //取内容
+                                    QByteArray byteBuf = socket-&gt;readAll();
+                                    QString buf =byteBuf;
+                                    if(readyFile)//接收文件信息
+                                    {
+                                        qint64 len = file2.write(byteBuf);
+                                        recvSize2 += len;
+                                        if(recvSize2 == fileSize2)
+                                        {
+                                           QString str = QString(&quot;收到文件：[%1: %2KB]&quot;).arg(fileName2).arg(fileSize2/1024);
+                                           file2.close();
+                                           QMessageBox::information(this,&quot;文件信息&quot;,str);
+                                           recvSize2 = 0;
+                                           readyFile = false;
+                                        }
+                                        return;
+                                    }
+                                    if(buf[0]==people_new)
+                                    {
+                                        //取出ip
+                                        QString ip = socket-&gt;peerAddress().toString();//取出ip
+                                        //删除前缀
+                                        ip = ip.right(ip.length()-7);
+                                        qint16 port1 = socket-&gt;peerPort();//取出端口
+
+                                        QString thename;
+                                        for(int j=1;j&lt;buf.size();j++){
+                                             thename[j-1] = buf[j];
+                                        }
+
+                                        for(int i=0;i&lt;plist.size();i++){
+                                            if(plist[i].pip==ip &amp;&amp; plist[i].pport == port1){
+                                                plist[i].name = thename;
+                                                                                     /**发给客户端*/
+                                                QString thestring;
+
+                                                thestring = to_c_people_new + plist[i].pip +sys_flag+ QString::number(plist[i].pport) + sys_flag + plist[i].name;
+                                                //P  ip  ! port ! name
+
+                                                for(int i=0;i&lt;count;i++){
+                                                    socketarr[i]-&gt;write(thestring.toUtf8().data());
+                                                }
+                                                return;
+                                            }
+                                        }
+                                    }
+                                    else if(buf[0] == sys_flag)
+                                    {
+                                        //信息：
+                                        buf = buf.right(buf.length()-1); //去掉sys_flag
+                                        QString ip = socket-&gt;peerAddress().toString();//取出ip
+                                        qint16 port = socket-&gt;peerPort();//取出端口号
+                                        ip = ip.right(ip.length()-7); //删除ip前缀
+
+
+                                        //文件反馈信息
+                                        if(buf == &quot;filedone&quot;){
+                                           QString thetemp = QString(ip+&quot;:&quot;+&quot;文件已接收&quot;);
+                                           ui-&gt;textEditFile-&gt;append(thetemp);
+                                        }
+                                        else if(buf == &quot;Close&quot;)//接收到用户端退出产生的反馈
+                                        {
+
+                                            /*******************************************************************************/
+                                            /********************************用户离开****************************************/
+                                            for(int i=0;i&lt;plist.size();i++){
+                                                if(plist[i].pip==ip &amp;&amp; plist[i].pport == port){
+                                                     /*发给客户端*/
+                                                     QString str;
+                                                     str = to_c_people_del + plist[i].pip +&quot;!&quot; + QString::number(plist[i].pport);
+                                                     //P  ip ! port
+
+                                                     for(int i=0;i&lt;count;i++){
+                                                         socketarr[i]-&gt;write(str.toUtf8().data());
+                                                     }
+
+                                                     plist.remove(i);
+                                                     break;
+                                                }
+                                            }
+                                            /********************************************************************************/
+
+                                            for(int i=0;i&lt;count;i++){
+                                                int iplen = socketarr[i]-&gt;peerAddress().toString().length()-7;
+                                                if(socketarr[i]-&gt;peerAddress().toString().right(iplen)==ip){
+                                                    QString temp = QString(&quot;[%1%2]:离开聊天室&quot;).arg(ip).arg(port);
+                                                    ui-&gt;textEdit-&gt;append(temp);
+                                                    temp = &quot;MSG##&quot;+temp;
+                                                    //广播出去
+                                                    for(int j=0;j&lt;count;j++){
+                                                       socketarr[j]-&gt;write(temp.toUtf8().data());
+                                                    }
+                                                    //删除
+                                                    socketarr.remove(i);
+                                                    count--;
+                                                    ui-&gt;labelonline-&gt;setText(&quot;当前在线人数：&quot;+QString::number(count));
+                                                    break;
+                                               }
+                                            }
+
+
+                                            //在存在用户退出后，更新显示当前在线用户端ip
+                                            if(count==0)
+                                            {
+                                               ui-&gt;textEdit_online-&gt;setText(&quot;&quot;);
+                                            }
+                                            else
+                                            {
+                                                //显示首ip
+                                                QString ip = socketarr[0]-&gt;peerAddress().toString();//取出ip
+                                                //删除前缀！
+                                                ip = ip.right(ip.length()-7);
+                                                ui-&gt;textEdit_online-&gt;setText(ip);
+
+
+                                                //显示剩余ip
+                                                for(int i=1;i&lt;count;i++)
+                                                {
+                                                QString ip = socketarr[i]-&gt;peerAddress().toString();//取出ip
+                                                //删除前缀！
+                                                ip = ip.right(ip.length()-7);
+                                                ui-&gt;textEdit_online-&gt;append(ip);
+                                                }
+                                            }
+                                       }
+                                    }
+                                    else if(buf.left(5) == MSG_flag)    //文本信息广播出去
+                                    {
+                                        QString temp1 = QString(buf);
+                                        ui-&gt;textEdit-&gt;append(temp1);
+                                        for(int i=0;i&lt;count;i++){
+                                            socketarr[i]-&gt;write(temp1.toUtf8().data());
+                                        }
+                                    }
+                                    else if(buf[0] == head_flag)
+                                    {
+                                        fileName2 = buf.section(&quot;##&quot;,1,1);
+                                        fileSize2 = buf.section(&quot;##&quot;,2,2).toInt();
+                                        file2.setFileName(&quot;../files/&quot;+fileName2);
+                                        bool isOk = file2.open( QFile::WriteOnly);
+                                        ui-&gt;textEditFile-&gt;append(&quot;收到文件：&quot; + file2.fileName());
+                                        if(false == isOk)
+                                        {
+                                            QMessageBox::information(this,&quot;文件信息&quot;,&quot;服务器炸了QWQ&quot;);
+                                            close();
+                                        }
+                                        readyFile = true;
+
+                                    } 
+                                }
+                             );
+
+                }
+    );
+
+    /**************************************************************************************/
+    //监听socket
+    phonetcpserver = new QTcpServer;
+
+    //receive
+    //qint16 phoneport = ui-&gt;lineEditphone-&gt;text().toInt();
+    phonetcpserver-&gt;listen(QHostAddress::Any,this-&gt;ui-&gt;lineEditphone-&gt;text().toInt());
+    connect(phonetcpserver,&amp;QTcpServer::newConnection,
+           [=]()
+           {
+                QTcpSocket * thesocket;
+                thesocket = phonetcpserver-&gt;nextPendingConnection();//取出socket
+                QString ip = thesocket-&gt;peerAddress().toString();
+                int port = thesocket-&gt;peerPort();
+                ip = ip.right(ip.length()-7);
+                ui-&gt;textEdit-&gt;setText(QString(&quot;%1::%2-进入语音聊天室&quot;).arg(ip).arg(port));
+
+                //connect 一定要写在newConnection内
+                connect(thesocket,SIGNAL(readyRead()),this,SLOT(readyReadSlot()));//receiv  important
+                phonetcpsocket.push_back(thesocket);
+                phone_count++;
+    });
+
+
+
+    QAudioFormat format; //采样设置
+    format.setCodec(&quot;audio/pcm&quot;);//编码
+    format.setByteOrder(QAudioFormat::LittleEndian);
+    format.setSampleRate(8000);//采样评率
+    format.setSampleSize(16);//采样点数据位数
+    format.setSampleType(QAudioFormat::UnSignedInt);//返回采样点格式
+    format.setChannelCount(1);//音频数据通道数
+
+    input = new QAudioInput(format,this);//采用格式
+    inputDevice = input-&gt;start();//采集声音
+
+
+    output = new QAudioOutput(format,this);
+    outputDevice = output-&gt;start();//开始播放
+    connect(inputDevice,SIGNAL(readyRead()),this,SLOT(onReadyRead()));
+    /**************************************************************************************/
+
+
+}
+
+
+
+//选择文件按钮
+void ServerWidget::on_ButtonSelect_clicked()
+{
+    QString fPath = QFileDialog::getOpenFileName(this,&quot;open&quot;,&quot;../&quot;);
+
+    if(false == fPath.isEmpty())//如果选择文件路径有效
+    {
+        //初始化
+        fileName.clear();
+        fileSize = 0;
+//        sendSize = 0;
+        filePath = fPath;
+        //获取文件信息
+        QFileInfo info(filePath);
+        fileName = info.fileName();
+        fileSize = info.size();
+
+
+    }
+    else
+    {
+        qDebug() &lt;&lt; &quot;选择文件路径出错 62&quot;;
+    }
+}
+
+void ServerWidget::on_ButtonSend_clicked()
+{
+    qDebug()&lt;&lt;&quot;on_ButtonSend_clicked&quot;&lt;&lt;endl;
+    //先发送文件头信息 文件名##文件大小
+    QString subhead = QString(&quot;%1##%2&quot;).arg(fileName).arg(fileSize);
+    QString head = head_flag + subhead;
+
+
+    //(广播)发送头部信息
+    for(int i=0;i&lt;count;i++)
+    {
+        qint64 len = socketarr[i]-&gt;write(head.toUtf8());
+
+        if(len &gt; 0)//头部信息发送成功
+        {
+            //发送真正的文件信息
+            //防止TCP黏包，需要通过定时器延时20ms
+            //文件传输计时器
+            connect(&amp;timer[i],&amp;QTimer::timeout,
+                    [=]()
+                    {
+                        //关闭定时器
+                        timer[i].stop();
+                        //发送文件
+                        sendData(socketarr[i], i);
+                    }
+                   );
+            timer[i].start(20);
+        }
+        else{
+            qDebug() &lt;&lt; &quot;头部信息发送失败 110&quot;;
+        }
+    }
+
+}
+
+
+
+void ServerWidget::sendData(QTcpSocket* tcpSocket, int i)
+{
+
+    //指定文件名
+    file[i].setFileName(filePath);
+    //打开文件
+    bool isOk = file[i].open(QIODevice::ReadOnly);
+    if(false == isOk)
+    {
+        qDebug() &lt;&lt; &quot;只读方式打开文件失败 77&quot;;
+    }
+    //提示打开文件的路径
+    ui-&gt;textEditFile-&gt;append(filePath);
+    ui-&gt;progressBar-&gt;show();
+    ui-&gt;progressBar-&gt;setRange(0, fileSize);
+    ui-&gt;progressBar-&gt;setValue(0);
+
+    qint64 len = 0;
+    do
+    {
+        //每次发送数据的单位（缓冲区大小）
+        char buf[4 * 1024] = {0};
+        len = 0;
+        //往文件中读数据
+        len = file[i].read(buf,sizeof(buf));
+        //发送数据
+        len = tcpSocket-&gt;write(buf,len);
+        //发送的数据需要累积
+        sendSize[i] += len;
+        ui-&gt;progressBar-&gt;setValue(sendSize[i]);
+
+    }while(len &gt; 0);
+
+    //判断是否发送文件完毕
+    if(sendSize[i] == fileSize)
+    {
+        sendSize[i] = 0;//以免重复弹出完成提示
+        ui-&gt;progressBar-&gt;hide();
+        file[i].close();
+        if(i==count-1)
+        QMessageBox::information(this,&quot;文件信息&quot;,&quot;文件传输完毕&quot;);
+    }
+}
+
+/***********************************************************/
+void ServerWidget::onReadyRead()
+{
+    qDebug()&lt;&lt;&quot;onReadyRead&quot;&lt;&lt;endl;
+    /*----------------------------------send************************/
+        video vp;
+        memset(&amp;vp,0,sizeof(vp));
+        //读取音频
+//        vp.lens = inputDevice-&gt;read(vp.audiodata,1024);//读取音频
+
+//        for(int j=0;j&lt;phone_count;j++){
+//            phonetcpsocket[j]-&gt;write((const char*)&amp;vp,sizeof(vp));
+//        }
+
+}
+
+void ServerWidget::readyReadSlot()
+{
+        qDebug() &lt;&lt; &quot;read&quot; ;
+        int size = output-&gt;periodSize();
+
+        QByteArray bug;
+
+        qDebug()&lt;&lt;&quot;audio is being received...&quot;&lt;&lt;endl;
+
+
+        for(int k=0;k&lt;phone_count;k++){
+            bug = phonetcpsocket[k]-&gt;readAll();
+            if(bug==&quot;&quot;)continue;
+            for(int j=0;j&lt;phone_count;j++){
+                if(k == j)  continue;
+                phonetcpsocket[j]-&gt;write(bug,size);
+            }
+        }
+}
+
+</code></pre>
+<h6 id="main-cpp"><a href="#main-cpp" class="headerlink" title="main.cpp"></a>main.cpp</h6><pre><code class="cpp">#include &quot;serverwidget.h&quot;
+
+#include &lt;QApplication&gt;
+#include &lt;QStyleFactory&gt;
+#include &lt;QFile&gt;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    a.setStyle(QStyleFactory::create(&quot;Fusion&quot;));
+    ServerWidget w;
+    w.show();
+
+    return a.exec();
+}
+</code></pre>
+<h5 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h5><p>注：pro文件添加</p>
+<p><code>QT       += core gui network multimedia</code></p>
+<h6 id="item-h"><a href="#item-h" class="headerlink" title="item.h"></a>item.h</h6><pre><code class="cpp">#ifndef ITEM_H
+#define ITEM_H
+#include &lt;QString&gt;
+#include &lt;QPushButton&gt;
+#include &lt;QWidget&gt;
+#include &lt;QHBoxLayout&gt;
+#include &lt;QTextEdit&gt;
+class ITEM
+{
+private:
+    QTextEdit *msgbtn;
+    QPushButton *imgbtn;
+    QWidget *itw;
+    QHBoxLayout *hlayout;
+    QString name;
+    QString color;
+    QString align;
+    int fheight(const QString &amp;str, int w);
+    int fwidth(const QString &amp;str, int w);
+
+
+public:
+    ITEM(const QString &amp;msg, const QString &amp;name,const QString &amp;ali , QWidget *w, QFont *f=NULL, bool vis=true);
+    void resize(int w, int h);
+    void setMsg(const QString &amp;msg);
+    void setStyle(QFont *f, double r, double w, double h);
+    QWidget* Item();
+};
+
+#endif // ITEM_H</code></pre>
+<h6 id="item-cpp"><a href="#item-cpp" class="headerlink" title="item.cpp"></a>item.cpp</h6><pre><code class="cpp">#include &quot;item.h&quot;
+#include &lt;QVBoxLayout&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+int ITEM::fwidth(const QString &amp;str, int w)
+{
+    QFont f = msgbtn-&gt;font();
+    QFontMetrics fm(f);
+    QStringList sl = str.split(&#39;\n&#39;);
+    int ma=0;
+    for(auto s:sl)
+    {
+        if(ma &lt; fm.boundingRect(s).width()+20)
+        {
+            ma = fm.boundingRect(s).width()+20;
+        }
+    }
+    return min(ma, int(0.6*w));
+}
+
+int ITEM::fheight(const QString &amp;str, int w)
+{
+    QFont f = msgbtn-&gt;font();
+    QFontMetrics fm(f);
+    QStringList sl = str.split(&#39;\n&#39;);
+    int res=12;
+    int h = fm.boundingRect(str).height();
+    for(auto s:sl)
+    {
+        res += h;
+        if(fm.boundingRect(s).width()+20 &gt; int(0.6*w))
+        {
+            res += fm.boundingRect(s).width() / (int(0.6*w)-20) * h;
+        }
+    }
+    return max(res, 60);
+}
+
+ITEM::ITEM(const QString &amp;msg, const QString &amp;name, const QString &amp;ali, QWidget *W,
+           QFont *f, bool vis)
+{
+    align = ali;
+    itw = new QWidget(W);
+    hlayout = new QHBoxLayout();
+    itw-&gt;setLayout(hlayout);
+    QString btnMsg=&quot;  &quot;;
+    for(int i=0, l=msg.length();i&lt;l;i++)
+    {
+        if(msg[i] == &#39;\n&#39;)
+        {
+            btnMsg.push_back(&quot;\n  &quot;);
+        }
+        else
+        {
+            btnMsg.push_back(msg[i]);
+        }
+    }
+    btnMsg.push_back(&quot;  &quot;);
+    msgbtn = new QTextEdit(itw);
+    msgbtn-&gt;setText(btnMsg);
+    msgbtn-&gt;setReadOnly(true);
+    imgbtn = new QPushButton(itw);
+    if(align == &quot;left&quot;)
+    {
+        hlayout-&gt;addWidget(imgbtn);
+        hlayout-&gt;addWidget(msgbtn);
+        hlayout-&gt;addStretch();
+
+    }
+    else
+    {
+        hlayout-&gt;addStretch();
+        hlayout-&gt;addWidget(msgbtn);
+        hlayout-&gt;addWidget(imgbtn);
+
+    }
+    imgbtn-&gt;resize(25, 25);
+    if(f == NULL)
+    {
+        f = new QFont();
+        f-&gt;setFamily(&quot;微软雅黑&quot;);
+        f-&gt;setPixelSize(20);
+    }
+    msgbtn-&gt;setFont(*f);
+    QString alpha = &quot;255&quot;;
+    if(!vis)    alpha=&quot;0&quot;;
+    if(name == &quot;刘朝日&quot;)
+    {
+        this-&gt;name = &quot;lzr.png&quot;;
+        this-&gt;color = &quot;rgba(169,209,142,&quot;+alpha+&quot;);&quot;;
+    }
+    else if(name == &quot;刘硕&quot;)
+    {
+        this-&gt;name = &quot;ls.png&quot;;
+        this-&gt;color = &quot;rgba(255,217,102,&quot;+alpha+&quot;);&quot;;
+    }
+    else if(name == &quot;曹文豪&quot;)
+    {
+        this-&gt;name = &quot;cwh.png&quot;;
+        this-&gt;color = &quot;rgba(157,195,230,&quot;+alpha+&quot;);&quot;;
+    }
+    else if(name == &quot;刘涵准&quot;)
+    {
+        this-&gt;name = &quot;lhz.png&quot;;
+        this-&gt;color = &quot;rgba(102,204,255,&quot;+alpha+&quot;);&quot;;
+    }
+    else if(name == &quot;雷艳&quot;)
+    {
+        this-&gt;name = &quot;ly.png&quot;;
+        this-&gt;color = &quot;rgba(252,209,216,&quot;+alpha+&quot;);&quot;;
+    }
+    imgbtn-&gt;setFixedSize(60, 60);
+    imgbtn-&gt;setStyleSheet(&quot;border-image:url(../src/&quot;+ this-&gt;name +&quot;);&quot;
+                          &quot;border-radius:30px;&quot;);
+    msgbtn-&gt;setStyleSheet(&quot;background-color:&quot;+this-&gt;color +
+                          &quot;border-radius: 5px;&quot;
+                          );
+    msgbtn-&gt;setMinimumHeight(60);
+
+    hlayout-&gt;setMargin(20);
+}
+
+void ITEM::resize(int w, int h)
+{
+    msgbtn-&gt;setFixedSize(fwidth(msgbtn-&gt;document()-&gt;toPlainText(), w),
+                         fheight(msgbtn-&gt;document()-&gt;toPlainText(), w));
+    itw-&gt;resize(w, max(max(h, int(1.3*imgbtn-&gt;height())), int(1.3*msgbtn-&gt;height())));
+
+}
+
+void ITEM::setMsg(const QString &amp;msg)
+{
+    msgbtn-&gt;setText(msg);
+}
+
+QWidget* ITEM::Item()
+{
+    return itw;
+}
+</code></pre>
+<h6 id="clientwidget-h"><a href="#clientwidget-h" class="headerlink" title="clientwidget.h"></a>clientwidget.h</h6><pre><code class="cpp">#ifndef CLIENTWIDGET_H
+#define CLIENTWIDGET_H
+
+#include &lt;QWidget&gt;
+#include &lt;QTcpSocket&gt;
+
+//音频信息
+#include &lt;QDialog&gt;
+#include &lt;QtNetwork/QUdpSocket&gt;
+#include &lt;QAudio&gt;
+#include &lt;QAudioInput&gt;
+#include &lt;QAudioOutput&gt;
+#include &lt;QIODevice&gt;
+
+
+#include &lt;QFile&gt;
+#include &lt;QDebug&gt;
+#include &lt;QMessageBox&gt;//弹出对话框
+#include &lt;QPushButton&gt;
+#include &lt;QTextEdit&gt;
+#include &lt;QVector&gt;
+#include &lt;QVBoxLayout&gt;
+#include &lt;QTimer&gt;
+#include &quot;item.h&quot;
+QT_BEGIN_NAMESPACE
+namespace Ui { class ClientWidget; }
+QT_END_NAMESPACE
+
+
+const char file_flag = &#39;F&#39;;
+const char head_flag = &#39;H&#39;;
+const QString MSG_flag = &quot;MSG##&quot;;
+const char sys_flag = &#39;!&#39;;
+const char people_new = &#39;P&#39;;//新的用户到来
+const char people_del = &#39;D&#39;;//新的用户离开
+/***********************************************/
+struct people{
+    QString pip;
+    QString name;
+    QString pport;
+};
+
+
+/***********************************************/
+
+
+
+
+
+
+class ClientWidget : public QWidget
+{
+    Q_OBJECT
+
+public:
+    ClientWidget(QWidget *parent = nullptr);
+    ~ClientWidget();
+    void on_pushButtonenter_clicked();
+
+private slots:
+
+
+    void on_pushButtonsend_clicked();
+
+    void on_pushButtonclose_clicked();
+
+    void on_selectButton_clicked();
+
+    void on_sendButton_clicked();
+
+    void slider();
+
+    void readyReadSlot();
+    void onReadyRead();
+
+private:
+    Ui::ClientWidget *ui;
+    QVBoxLayout *vlayout;
+    QWidget *login;
+    QWidget *upload;
+    QString name, ip;
+    int port;
+    QVector&lt;ITEM *&gt; items;
+    int phone_port;
+    QVector&lt;people&gt; plist;
+
+    QTcpSocket *tcpsocket;
+    QFile  file;//文件对象
+    QString fileName;//文件名字
+    qint64 fileSize;//文件大小
+    qint64 recvSize;//已接收的文件大小
+
+
+    //客户端作为发送端
+    QFile  file2;//文件对象
+    QString fileName2;//文件名字
+    qint64 fileSize2;//文件大小
+    qint64 sendSize2;//已发送的文件大小
+
+    QTimer timer;//定时器  黏包  头部----文件体
+    QMessageBox msgBox;
+    bool phone_on;
+    bool fileflag;
+    bool readyFile;
+    void pushMsg(const QString &amp;msg, const QString &amp;name, const QString &amp;alig);
+    void updateList();
+
+    //音频
+    QTcpSocket *phone_tcpsocket;
+    //out
+    QAudioOutput *output;
+    QIODevice *outputDevice;
+
+    //in
+    QAudioInput *input;
+    QIODevice *inputDevice;
+    bool linktophone=false;
+
+
+protected:
+    void sendData(QTcpSocket* tcpSocket);//发送文件数据
+    void paintEvent(QPaintEvent *event);
+
+signals:
+    void logined();
+};
+struct video{
+        char audiodata[1024];
+        int lens;
+    };
+#endif // CLIENTWIDGET_H
+</code></pre>
+<h6 id="clientwidget-cpp"><a href="#clientwidget-cpp" class="headerlink" title="clientwidget.cpp"></a>clientwidget.cpp</h6><pre><code class="cpp">#include &quot;clientwidget.h&quot;
+#include &quot;ui_clientwidget.h&quot;
+#include &lt;QHostAddress&gt;
+#include &lt;QFileDialog&gt;//选择文件的对话框
+#include &lt;QPainter&gt;
+#include &lt;QInputDialog&gt;
+#include &lt;QWidget&gt;
+#include &lt;QScrollArea&gt;
+#include &lt;QFont&gt;
+#include &lt;QPushButton&gt;
+#include &lt;QTextEdit&gt;
+#include &lt;QAbstractSlider&gt;
+#include &lt;QScrollBar&gt;
+#include &lt;QLineEdit&gt;
+#include &lt;QDebug&gt;
+#include &lt;QProgressBar&gt;
+#include &lt;windows.h&gt;
+#include &lt;QRect&gt;
+#include &quot;item.h&quot;
+ClientWidget::ClientWidget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::ClientWidget)
+{
+    phone_tcpsocket = new QTcpSocket;
+    ip=&quot;&quot;;
+    port = 0;
+    ui-&gt;setupUi(this);
+    ui-&gt;sendButton-&gt;hide();
+    ui-&gt;progressBar-&gt;hide();
+    readyFile = false;
+    phone_on = false;
+    setWindowTitle(&quot;计算机网络点点通信实验&quot;);
+    resize(1350, 850);
+    tcpsocket = NULL;
+    tcpsocket = new QTcpSocket(this);
+    connect(this, &amp;ClientWidget::close, this, &amp;ClientWidget::on_pushButtonclose_clicked);
+    ui-&gt;scrollArea-&gt;setStyleSheet(&quot;background-color:rgba(255,255,255,0)&quot;);
+    ui-&gt;input-&gt;setStyleSheet(&quot;background-color:rgba(255,255,0,20);&quot;
+                             &quot;border-style:solid;&quot;
+                             &quot;border-radius:5px;&quot;
+                             &quot;border-color:yellow;&quot;
+                             &quot;border-width:2.5px;&quot;);
+    QFont f;
+    f.setFamily(&quot;微软雅黑&quot;);
+    f.setPixelSize(20);
+    ui-&gt;input-&gt;setFont(f);
+    vlayout = new QVBoxLayout(ui-&gt;scrollAreaWidgetContents);
+    ui-&gt;scrollAreaWidgetContents-&gt;setLayout(vlayout);
+    vlayout-&gt;setDirection(QBoxLayout::BottomToTop);
+    vlayout-&gt;addStretch(100);
+    connect(ui-&gt;scrollArea-&gt;verticalScrollBar(), &amp;QAbstractSlider::rangeChanged, this, &amp;ClientWidget::slider);
+
+    upload = new QWidget();
+
+    login = new QWidget();
+    login-&gt;setWindowTitle(&quot;SOCKET 通信&quot;);
+    login-&gt;setFixedSize(300, 300);
+
+    QPushButton *namelabel = new QPushButton(login);
+    namelabel-&gt;setText(&quot;用户名&quot;);
+    namelabel-&gt;setGeometry(10,20, 60, 30);
+    QLineEdit *name = new QLineEdit(login);
+    name-&gt;setGeometry(80, 20, 200, 30);
+
+    QPushButton *iplabel = new QPushButton(login);
+    iplabel-&gt;setText(&quot;ip地址&quot;);
+    iplabel-&gt;setGeometry(10,70, 60, 30);
+    QLineEdit *ip = new QLineEdit(login);
+    ip-&gt;setGeometry(80, 70, 200, 30);
+
+    QPushButton *portlabel = new QPushButton(login);
+    portlabel-&gt;setText(&quot;port&quot;);
+    portlabel-&gt;setGeometry(10,120, 60, 30);
+    QLineEdit *port = new QLineEdit(login);
+    port-&gt;setGeometry(80, 120, 200, 30);
+
+    QPushButton *phoneportlabel = new QPushButton(login);
+    phoneportlabel-&gt;setText(&quot;p_port&quot;);
+    phoneportlabel-&gt;setGeometry(10,170, 60, 30);
+    QLineEdit *phoneport = new QLineEdit(login);
+    phoneport-&gt;setGeometry(80, 170, 200, 30);
+    phoneport-&gt;setText(&quot;10085&quot;);
+
+    QPushButton *loginbtn = new QPushButton(login);
+    loginbtn-&gt;setText(&quot;登录&quot;);
+    loginbtn-&gt;setGeometry(10, 220, 270, 40);
+
+
+
+    login-&gt;show();
+    connect(loginbtn, &amp;QPushButton::pressed, this, [this, ip, port, name, phoneport](){
+        this-&gt;name = name-&gt;text();
+        this-&gt;ip = ip-&gt;text();
+        this-&gt;port = port-&gt;text().toInt();
+        this-&gt;phone_port = phoneport-&gt;text().toInt();
+        if(this-&gt;name != &quot;刘朝日&quot; &amp;&amp; this-&gt;name != &quot;曹文豪&quot; &amp;&amp; this-&gt;name != &quot;刘硕&quot; &amp;&amp; this-&gt;name != &quot;刘涵准&quot;
+                &amp;&amp; this-&gt;name != &quot;雷艳&quot;)
+        {
+            return;
+        }
+        this-&gt;on_pushButtonenter_clicked();
+
+
+    });
+    connect(this, &amp;ClientWidget::logined, login, &amp;QWidget::close);
+    setMinimumSize(810, 510);
+    setMaximumSize(1350, 850);
+    ui-&gt;onlineListW-&gt;setStyleSheet(&quot;background-color:rgba(197,232,211,125);&quot;);
+    ui-&gt;progressBar-&gt;hide();
+
+    ui-&gt;selectButton-&gt;setStyleSheet(&quot;QPushButton{border-image:url(../src/upload.png);&quot;
+                                    &quot;border-radius:40px;}&quot;
+                                    &quot;QPushButton:hover{border-image:url(../src/upload_hover.png);&quot;
+                                    &quot;border-radius:40px;}&quot;);
+    ui-&gt;phoneButton-&gt;setStyleSheet(&quot;QPushButton{border-image:url(../src/phone_off.png);&quot;
+                                     &quot;border-radius:40px;}&quot;
+                                   &quot;QPushButton:hover{border-image:url(../src/phone_hover.png);&quot;
+                                   &quot;border-radius:40px;}&quot;);
+    connect(ui-&gt;phoneButton, &amp;QPushButton::pressed, [=](){
+        if(phone_on)
+        {
+            ui-&gt;phoneButton-&gt;setStyleSheet(&quot;QPushButton{border-image:url(../src/phone_off.png);&quot;
+                                             &quot;border-radius:40px;}&quot;
+                                           &quot;QPushButton:hover{border-image:url(../src/phone_hover.png);&quot;
+                                           &quot;border-radius:40px;}&quot;);
+            phone_tcpsocket-&gt;close();
+        }
+        else
+        {
+            //获取服务器的ip和端口
+            //主动和服务器连接
+            phone_tcpsocket-&gt;connectToHost(this-&gt;ip, this-&gt;phone_port);
+
+            ui-&gt;phoneButton-&gt;setStyleSheet(&quot;QPushButton{border-image:url(../src/phone_on.png);&quot;
+                                             &quot;border-radius:40px;}&quot;
+                                           &quot;QPushButton:hover{border-image:url(../src/phone_onhover.png);&quot;
+                                           &quot;border-radius:40px;}&quot;);
+        }
+        phone_on = !phone_on;
+
+    });
+
+
+    //音频信息/*****************************************************************/
+
+
+        connect(phone_tcpsocket, &amp;QTcpSocket::connected,
+        [=]()
+        {
+            //提示连接成功
+//            ui-&gt;textEdit-&gt;append(&quot;已经加入语音群聊&quot;);
+        }
+        );
+
+        connect(phone_tcpsocket,SIGNAL(readyRead()),this,SLOT(readyReadSlot()));
+
+        //设置参数
+        QAudioFormat format;
+        format.setSampleRate(8000);
+        format.setChannelCount(1);
+        format.setSampleSize(16);
+        format.setCodec(&quot;audio/pcm&quot;);
+        format.setSampleType(QAudioFormat::SignedInt);
+        format.setByteOrder(QAudioFormat::LittleEndian);
+
+        output = new QAudioOutput(format,this);
+
+        outputDevice = output-&gt;start();//开始播放
+
+        input = new QAudioInput(format,this);
+        inputDevice = input-&gt;start();
+
+        connect(inputDevice,SIGNAL(readyRead()),this,SLOT(onReadyRead()));//send
+
+        //音频信息/*****************************************************************/
+}
+
+
+void ClientWidget::paintEvent(QPaintEvent *)
+{
+    QPainter p(this);
+    p.drawPixmap(0, 0, width(), height(), QPixmap(&quot;../src/background.jpg&quot;));
+    ui-&gt;scrollArea-&gt;resize(0.75*width(), 0.87*height());
+    ui-&gt;scrollArea-&gt;move(0.25*width(), 0);
+    ui-&gt;input-&gt;resize(0.585*width(), 0.09*height());
+    ui-&gt;input-&gt;move(0.25*width(), 0.90*height());
+    ui-&gt;pushButtonsend-&gt;move(0.85*width(), 0.90*height());
+    ui-&gt;pushButtonsend-&gt;resize(0.14*width(), 0.04*height());
+    ui-&gt;pushButtonclose-&gt;move(0.85*width(), 0.95*height());
+    ui-&gt;pushButtonclose-&gt;resize(0.14*width(), 0.04*height());
+    ui-&gt;scrollAreaWidgetContents-&gt;resize(0.75*width(), 0.87*height());
+    ui-&gt;onlineListW-&gt;resize(0.25*width(), 0.87*height());
+    ui-&gt;onlineListW-&gt;move(0, 0);
+    ui-&gt;selectButton-&gt;resize(0.09*height(), 0.09*height());
+    ui-&gt;phoneButton-&gt;resize(0.09*height(),0.09*height());
+    ui-&gt;selectButton-&gt;move(0.03*width(), 0.90*height());
+    ui-&gt;phoneButton-&gt;move(0.18*width() , 0.90*height());
+}
+
+void ClientWidget::slider()
+{
+
+    ui-&gt;scrollArea-&gt;verticalScrollBar()-&gt;setValue(ui-&gt;scrollArea-&gt;verticalScrollBar()-&gt;maximumHeight());
+}
+
+void ClientWidget::updateList()
+{
+
+}
+ClientWidget::~ClientWidget()
+{
+    delete ui;
+}
+
+void ClientWidget::pushMsg(const QString &amp;msg, const QString &amp;name, const QString &amp;ali)
+{
+    ITEM *it = new ITEM(msg, name, ali, ui-&gt;scrollAreaWidgetContents);
+    vlayout-&gt;insertWidget(1, it-&gt;Item());
+    items.push_back(it);
+    it-&gt;resize(0.8*width(), 0.1*height());
+}
+void ClientWidget::on_pushButtonenter_clicked()
+{
+
+    //获取服务器的ip和端口
+    QString ip = this-&gt;ip;
+    qint16 port = this-&gt;port;
+    tcpsocket-&gt;connectToHost(QHostAddress(ip),port);
+
+    connect(tcpsocket,&amp;QTcpSocket::connected,
+            [=]()
+            {
+                QString str = people_new+name;
+                tcpsocket-&gt;write(str.toUtf8().data());
+                emit logined();
+                show();
+            }
+            );
+
+    connect(tcpsocket,&amp;QTcpSocket::readyRead,
+            [=]()
+                {
+
+                    //取出接收的内容
+                    QByteArray byteBuf = tcpsocket-&gt;readAll();
+                    if(byteBuf == &quot;&quot;)   return;    //防止空串bug
+                    QString buf = byteBuf;
+                    if(readyFile)   //传过来的是文件
+                    {
+                        qint64 len = file.write(byteBuf);
+                        recvSize += len;
+                        if(recvSize == fileSize)
+                        {
+                            QString done;done.push_back(sys_flag);done.push_back(&quot;filedone&quot;);
+                            tcpsocket-&gt;write(done.toUtf8().data());
+                            file.close();
+                            QString str = QString(&quot;收到文件：[%1: %2KB]&quot;).arg(fileName).arg(fileSize/1024);
+                            readyFile = false;
+                            QMessageBox::information(this,&quot;文件信息&quot;,str);
+                        }
+                    }
+                    else if(buf[0] == head_flag) //接收头
+                    {
+                        qDebug()&lt;&lt;buf&lt;&lt;endl;
+                        buf = buf.right(buf.length()-1);
+                        //解析头部信息 QString buf = &quot;hello##1024&quot;
+                        //初始化
+                        fileName = buf.section(&quot;##&quot;,0,0);
+                        fileSize = buf.section(&quot;##&quot;,1,1).toInt();
+                        recvSize = 0;
+                        //打开文件
+//                        QString filePath1 = QFileDialog::getExistingDirectory(this,&quot;open&quot;,&quot;./&quot;);
+//                        qDebug()&lt;&lt;buf&lt;&lt;&quot; &quot;&lt;&lt;isMSG&lt;&lt;endl;
+//                        QString filePath1 = fileName;
+                        file.setFileName(fileName);//&quot;D:\book\\&quot;+
+                        qDebug()&lt;&lt;&quot;收到文件：&quot; + file.fileName()&lt;&lt;endl;
+                        bool isOk = file.open(QIODevice::WriteOnly);
+                        if(false == isOk)
+                        {
+                            QMessageBox::information(this,&quot;文件信息&quot;,&quot;服务器炸了QWQ&quot;);
+                            close();
+                        }
+                        readyFile = true;
+                    }
+                    else if(buf[0]==people_new){//P  ip  ! port ! name
+                        QString theip ;
+                        QString theport;
+                        QString thename;
+                        int thej=1;
+                        int num=0;
+                        for(;thej&lt;buf.size();thej++){
+                            if(buf[thej]==sys_flag)break;
+                            theip[num] = buf[thej];
+                        }
+                        thej++;
+                        num=0;
+                        for(;thej&lt;buf.size();thej++){
+                            if(buf[thej]==sys_flag)break;
+                            theport[num] = buf[thej];
+                        }
+                        thej++;
+                        num=0;
+                        for(;thej&lt;buf.size();thej++){
+                            thename[num] = buf[thej];
+                        }
+                        people thep;
+                        thep.pip = theip;
+                        thep.name = thename;
+                        thep.pport = theport;
+                        plist.push_back(thep);
+                        return;
+                    }
+                    else if(buf[0]==people_del){//D ip ! port
+                        QString theip ;
+                        QString theport;
+                        for(int j=1;j&lt;buf.size();j++){
+
+                            if(buf[j]==sys_flag)break;
+                            theip[j-1] = buf[j];
+
+                        }
+                        bool flag = false;
+                        int num=0;
+                        for(int j=1;j&lt;buf.size();j++){
+
+
+                            if(buf[j]!=sys_flag)continue;
+                            else {
+                                flag = true;
+                                continue;
+                            }
+
+                            if(flag){
+                                theport[num] = buf[j];
+                                num++;
+                            }
+
+
+                        }
+
+                        for(int i=0;i&lt;plist.size();i++){
+                            if(plist[i].pip == theip &amp;&amp; plist[i].pport == theport){
+                                plist.remove(i);
+                                return;
+                            }
+                        }
+
+                        return;
+                    }
+                    else if(buf.left(5) == MSG_flag)   //传过来的是信息
+                    {
+                        buf = buf.right(buf.length()-5);
+
+                        if(buf.section(&quot;:&quot;,1,1) == &quot;进入聊天室&quot;)
+                        {
+
+                        }
+                        else if(buf.section(&quot;:&quot;,1,1) == &quot;离开聊天室&quot;)
+                        {
+
+                        }
+                        else if(name != buf.section(&quot;:&quot;, 0, 0))
+                        {
+                            pushMsg(buf.section(&quot;:&quot;,1,1),buf.section(&quot;:&quot;, 0, 0) , &quot;left&quot;);
+                        }
+                    }
+                }
+    );
+}
+
+void ClientWidget::on_pushButtonsend_clicked()
+{
+
+    //获取内容
+    QString str = ui-&gt;input-&gt;document()-&gt;toPlainText();
+    if(str == &quot;&quot;)
+    {
+        QMessageBox::information(this,&quot;提示&quot;,&quot;发送消息不能为空&quot;);
+        return;
+    }
+    pushMsg(str, name, &quot;right&quot;);
+    str = MSG_flag+name+&quot;:&quot;+str;
+    tcpsocket-&gt;write(str.toUtf8().data());
+    ui-&gt;input-&gt;clear();
+}
+
+void ClientWidget::on_pushButtonclose_clicked()
+{
+    //关闭
+    QString str;    str.push_back(sys_flag);
+    str.push_back(&quot;Close&quot;);
+    tcpsocket-&gt;write(str.toUtf8().data());
+    tcpsocket-&gt;disconnectFromHost();
+    tcpsocket-&gt;close();
+    this-&gt;close();
+}
+
+
+//选择文件按钮
+void ClientWidget::on_selectButton_clicked()
+{
+    QString filePath2 = QFileDialog::getOpenFileName(this,&quot;open&quot;,&quot;../&quot;);
+
+    if(false == filePath2.isEmpty())//如果选择文件路径有效
+    {
+        //初始化
+        fileName2.clear();
+        fileSize2 = 0;
+        sendSize2 = 0;
+
+        //获取文件信息
+        QFileInfo info(filePath2);
+        fileName2 = info.fileName();
+        fileSize2 = info.size();
+
+        //只读方式打开文件
+        //指定文件名
+        file2.setFileName(filePath2);
+
+        //打开文件
+        bool isOk = file2.open(QIODevice::ReadOnly);
+        if(false == isOk)
+        {
+            qDebug() &lt;&lt; &quot;只读方式打开文件失败 77&quot;;
+            return;
+        }
+        upload-&gt;setWindowTitle(&quot;文件上传&quot;);
+        ui-&gt;progressBar-&gt;setValue(0);
+        ui-&gt;progressBar-&gt;setRange(0, fileSize2);
+        ui-&gt;progressBar-&gt;setParent(upload);
+        ui-&gt;progressBar-&gt;show();
+        ui-&gt;sendButton-&gt;setParent(upload);
+        ui-&gt;sendButton-&gt;show();
+        ui-&gt;progressBar-&gt;setGeometry(20, 20, 200, 50);
+        ui-&gt;sendButton-&gt;setGeometry(250, 20, 100, 50);
+        upload-&gt;show();
+    }
+    else
+    {
+        qDebug() &lt;&lt; &quot;选择文件路径出错 62&quot;;
+    }
+}
+
+
+//反向发送按钮
+void ClientWidget::on_sendButton_clicked()
+{
+    qDebug()&lt;&lt;&quot;on_sendButton_clicked&quot;&lt;&lt;endl;
+    //先发送文件头信息 文件名##文件大小
+    QString head = head_flag + QString(&quot;##%1##%2&quot;).arg(fileName2).arg(fileSize2);
+    qDebug()&lt;&lt;head&lt;&lt;endl;
+    //发送头部信息
+    qint64 len = tcpsocket-&gt;write(head.toUtf8());
+
+    if(len &gt; 0)//头部信息发送成功
+    {
+        //发送真正的文件信息
+        //防止TCP黏包，需要通过定时器延时20ms
+        timer.start(200);
+
+        //文件传输计时器
+        connect(&amp;timer,&amp;QTimer::timeout,
+                [=]()
+                {
+                    //关闭定时器
+                    timer.stop();
+
+                    //发送文件
+
+                    sendData(tcpsocket);
+                }
+        );
+    }
+    else{
+        qDebug() &lt;&lt; &quot;头部信息发送失败 110&quot;;
+        file2.close();
+    }
+
+}
+
+//发送文件
+void ClientWidget::sendData(QTcpSocket* tcpSocket)
+{
+    qint64 len = 0;
+
+    do
+    {
+        //每次发送数据的单位（缓冲区大小）
+        char buf[4 * 1024] = {0};
+        len = 0;
+
+        //往文件中读数据
+        len = file2.read(buf,sizeof(buf));
+        len = tcpSocket-&gt;write(buf,len);
+        //发送的数据需要累积
+        sendSize2 += len;
+        ui-&gt;progressBar-&gt;setValue(sendSize2);
+    }while(len &gt; 0);
+
+    //判断是否发送文件完毕
+    if(sendSize2 == fileSize2)
+    {
+        QMessageBox::information(NULL, &quot;transport&quot;, &quot;文件发送完毕！&quot;);
+        ui-&gt;progressBar-&gt;hide();
+        sendSize2 = 0;//以免重复弹出完成提示
+    }
+    file2.close();
+    upload-&gt;close();
+}
+
+
+/*****************************音频信息*************************/
+void ClientWidget::readyReadSlot(){
+        int size = output-&gt;periodSize();
+        QByteArray bug;
+        video vp;
+        memset(&amp;vp,0,sizeof(vp));
+        //监听音频   并且传送
+        qDebug()&lt;&lt;&quot;我在接收呢&quot;&lt;&lt;endl;
+        bug = phone_tcpsocket-&gt;readAll();
+        outputDevice-&gt;write(bug,size);
+}
+
+
+void ClientWidget::onReadyRead()//send
+{
+        qDebug()&lt;&lt;&quot;It&#39;s sending audio!&quot;&lt;&lt;endl;
+        video vp;
+        memset(&amp;vp,0,sizeof(vp));
+        //读取音频
+        vp.lens = inputDevice-&gt;read(vp.audiodata,1024);
+        phone_tcpsocket-&gt;write((const char*)&amp;vp,sizeof(vp));
+        //先给服务发送(接收文件完成的信息)
+}</code></pre>
+<h6 id="main-cpp-1"><a href="#main-cpp-1" class="headerlink" title="main.cpp"></a>main.cpp</h6><pre><code class="cpp">#include &quot;clientwidget.h&quot;
+
+#include &lt;QApplication&gt;
+#include &lt;QStyleFactory&gt;
+#include &lt;QWidget&gt;
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    a.setStyle(QStyleFactory::create(&quot;Fusion&quot;));
+    ClientWidget w;
+    return a.exec();
+}</code></pre>
+<h4 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h4><ul>
+<li>仅仅支持同一局域网内通讯</li>
+<li>若连接外网（比如河北的物理机）可以使用花生壳（免费1G）等端口映射工具；</li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>LiuShuo</li>
+  <li><strong>本文链接：</strong><a href="http://liushuo1999.github.io/2020/05/16/QT-TCP%E9%80%9A%E8%AE%AF/index.html">http://liushuo1999.github.io/2020/05/16/QT-TCP%E9%80%9A%E8%AE%AF/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QT/" rel="tag">QT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TCP%E9%80%9A%E8%AE%AF/" rel="tag">TCP通讯</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%BD%91%E8%AF%BE%E8%AE%BE/" rel="tag">计网课设</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/05/19/QT%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/"><i class="iconfont iconleft"></i>QT全局变量声明</a>
+  
+  
+    <a href="/2020/05/14/scanf-%E8%B8%A9%E5%9D%91/">scanf 踩坑<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>

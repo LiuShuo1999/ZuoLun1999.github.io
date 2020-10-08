@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>后缀树(Ukkonen算法) - 左轮</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+
+  
+  
+  <meta name="description" content="后缀树可视化网站参考链接1–理论部分参考链接2–实操部..."> 
+  
+  <meta name="author" content="LiuShuo"> 
+
+  
+    <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  
+  
+    <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  
+  
+    <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  
+  
+    <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1445822_hhodbqn7tit.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css">
+
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      lazyload: {
+        enable: true,
+        loadingImage: '/images/theme/loading.gif',
+      },
+      donate: {
+        enable: true,
+        alipay: 'https://pic.izhaoo.com/alipay.jpg',
+        wechat: 'https://pic.izhaoo.com/wechat.jpg'
+      },
+      motto: {
+        api: '',
+        default: '我在开了灯的床头下，想问问自己的心啊。'
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        alwaysShow: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: true
+      }
+    }
+  </script>
+
+  
+
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="左轮" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<body class="lock-screen">
+  <div class="loading"></div>
+  
+
+
+<nav class="navbar">
+  <div class="left"></div>
+  <div class="center">后缀树(Ukkonen算法)</div>
+  <div class="right">
+    <i class="iconfont iconmenu j-navbar-menu"></i>
+  </div>
+</nav>
+
+  <nav class="menu">
+  <div class="menu-wrap">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content">
+      
+      
+      
+      
+      <li class="menu-item"><a href="/ " class="underline"> 首页</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/galleries " class="underline"> 摄影</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/archives " class="underline"> 归档</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/tags " class="underline"> 标签</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/categories " class="underline"> 分类</a></li>
+      
+      
+      
+      
+      <li class="menu-item"><a href="/about " class="underline"> 关于</a></li>
+      
+    </ul>
+    <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  </div>
+</nav>
+  <main id="main">
+  <div class="container" id="container">
+    <article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">后缀树(Ukkonen算法)</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>五月 09, 2020</span
+        class="post-info-item">
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>8431</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        <h1 id="后缀树"><a href="#后缀树" class="headerlink" title="后缀树"></a>后缀树</h1><h5 id="可视化网站"><a href="#可视化网站" class="headerlink" title="可视化网站"></a><a href="https://brenden.github.io/ukkonen-animation/" target="_blank" rel="noopener">可视化网站</a></h5><h5 id="参考链接1–理论部分"><a href="#参考链接1–理论部分" class="headerlink" title="参考链接1–理论部分"></a><a href="https://www.cnblogs.com/xubenben/p/3484988.html" target="_blank" rel="noopener">参考链接1–理论部分</a></h5><h5 id="参考链接2–实操部分"><a href="#参考链接2–实操部分" class="headerlink" title="参考链接2–实操部分"></a><a href="https://www.cnblogs.com/xubenben/p/3486007.html" target="_blank" rel="noopener">参考链接2–实操部分</a></h5><h2 id="什么是后缀树？"><a href="#什么是后缀树？" class="headerlink" title="什么是后缀树？"></a>什么是后缀树？</h2><p>后缀树是一种搜索树，它描述了给定字符串的所有后缀，许多重要的字符串操作都能够在后缀树上快速地实现。</p>
+<p><strong>定义</strong></p>
+<p>一个长度为n的字符串S，它的后缀树定义为一棵满足如下条件的树：</p>
+<ol>
+<li><p>从根到树叶的路径与S的后缀一一对应。即每条路径惟一代表了S的一个后缀；</p>
+</li>
+<li><p>每条边都代表一个非空的字符串；</p>
+</li>
+<li><p>所有内部节点（根节点除外）都有至少两个子节点。</p>
+</li>
+</ol>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="后缀树构建（Ukkonen"><a href="#后缀树构建（Ukkonen" class="headerlink" title="后缀树构建（Ukkonen)"></a>后缀树构建（Ukkonen)</h2><pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string&gt;
+#include &lt;cmath&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+using namespace std;
+const int MAXN = 5000;
+const int ALPHABET_SIZE = 256;
+const int oo = 1 &lt;&lt; 25;
+int thelocation = 0;
+int pos;//用于定位字符串中的字符的位置，，也即为外层的一个for循环
+
+//后缀树节点
+struct node {
+
+    //备注  [start,end)
+
+    int start;//字符串首位
+    int end;//字符串末位
+    int slink;//后缀链表指针
+    int next[ALPHABET_SIZE];//孩子指针 
+    int location;//后缀下标
+    int father;//仅仅在查找最大重复子串的时候适用，初始化为0
+    //node() {
+    //    location = -1;
+    //}
+    int edge_length() {
+        return min(end, pos + 1) - start;//返回表示边的长度 //&quot;??&quot;
+    }
+};
+
+//声明大数组
+node tree[2 * MAXN];
+
+//后缀树
+class suffixtree {
+private:
+    int root;//后缀树根节点
+    int last_added;//后缀树上一次添加的节点，以便于增加后缀链表
+    int treesize;
+    int needSL;//当形成一个内部节点时，更新needSL，用于添加后缀链表
+    int Remainder;//计数器Remainder: 记录我们在当前阶段需要插入的叶子节点数目。
+    int active_node, active_e, active_len;//活动三元组
+
+    int termnum;//用于找某个节点的所有叶子节点的内部变量
+    void numofleaf(int node) {
+        if (tree[node].location != -1) {
+            termnum++;
+            return;
+        }
+        for (int i = 0; i &lt; ALPHABET_SIZE; i++) {
+            if (tree[node].next[i])
+                numofleaf(tree[node].next[i]);
+        }
+    }
+
+public:
+    char text[MAXN];
+    suffixtree(string s=&quot;abc&quot;) {
+        needSL = 0;
+        last_added = 0;
+        pos = -1;
+        Remainder = 0;
+        //初始化三元组
+        active_e = 0, active_len = 0;
+        root = active_node = new_node(-1, -1);
+
+        for (int i = 0; i &lt; s.size(); i++) {
+            st_extend(s[i]);
+        }
+        treesize = s.size();
+    }
+
+int new_node(int start, int end = oo) {
+    node nd;
+    nd.start = start;
+    nd.father = 0;
+    nd.end = end;
+    nd.slink = 0;
+    for (int i = 0; i &lt; ALPHABET_SIZE; i++) {
+        nd.next[i] = 0;
+    }
+
+    //添加后缀下标
+    if (end == oo) {
+        nd.location = thelocation;
+        thelocation++;
+    }
+    else nd.location = -1;
+
+    tree[++last_added] = nd;
+    return last_added;
+}
+
+//active_e 是活跃的边在text内的序号
+char active_edge() {
+    return text[active_e];
+}
+
+//增加后缀链表 -&gt; 当前内部节点(needSL)指向本阶段最近一次建立的内部节点(int node)
+void add_SL(int node) {
+    //加入后缀链表                                        
+    if (needSL &gt; 0)tree[needSL].slink = node;
+    needSL = node;
+}
+
+//更新活动三元组
+bool walk_down(int node) {
+    if (active_len &gt;= tree[node].edge_length()) {//判断是否更新活跃点，
+        active_e += tree[node].edge_length();
+        active_len -= tree[node].edge_length();
+        active_node = node;
+        return true;
+    }
+    return false;
+}
+
+//往后缀树中增加字符-&gt;c
+void st_extend(char c) {
+    text[++pos] = c;//text是后缀树组
+    needSL = 0;//重置内部节点(needSL) //新的阶段
+    Remainder++;
+    while (Remainder &gt; 0) {
+        if (active_len == 0)active_e = pos;         //更新活跃边
+
+        if (tree[active_node].next[active_edge()] == 0) {    //? active_edge() 字符？
+            //从根节点创建叶子节点
+            int leaf = new_node(pos);
+            tree[active_node].next[active_edge()] = leaf;
+            add_SL(active_node);
+
+        }
+        else {
+            int nxt = tree[active_node].next[active_edge()];
+
+
+            if (walk_down(nxt)) continue; //observation 2 //沿着活跃边往下走，并且可以越过一个点，即是否更新活跃点，当经过一个边所有的字符时，更新活跃点
+
+            if (text[tree[nxt].start + active_len] == c) { //observation 1  新加入的字符，可以形成隐式树
+                active_len++;   //更新活跃边长度
+                add_SL(active_node);//判断是否需要添加后缀链表 
+                break;
+            }
+
+
+            //从内部分裂--每次内部分裂都会形成一个叶子节点
+            int split = new_node(tree[nxt].start, tree[nxt].start + active_len);
+            tree[active_node].next[active_edge()] = split;
+            //构造叶子节点
+            int leaf = new_node(pos);
+            tree[split].next[c] = leaf;
+            tree[nxt].start += active_len;
+            tree[split].next[text[tree[nxt].start]] = nxt;
+            add_SL(split); //按照规则2更新三元组
+        }
+        Remainder--;
+        if (active_node == root &amp;&amp; active_len &gt; 0) { //按照规则1更新三元组
+            active_len--;                  
+            active_e = pos - Remainder + 1;
+        }
+        else
+            active_node = tree[active_node].slink &gt; 0 ? tree[active_node].slink : root; //按照规则3更新三元组
+    }
+}
+
+//判断是否存在子串T
+bool search(string T) {
+
+    if (T.size() &gt; treesize)return false;
+
+    //找到第一个结点
+    if (!tree[1].next[T[0]])return false;
+    int nxt = tree[1].next[T[0]];
+
+    for (int i = 0; i &lt; T.size(); i++) {
+        for (int j = tree[nxt].start; j &lt; tree[nxt].end; j++) {
+            if (text[j] == T[i]) {
+                i++;
+                //遍历i结束
+                if (i == T.size())return true;
+            }
+            else return false;
+
+        }
+        //找到下一个节点
+        nxt = tree[nxt].next[T[i]];
+        if (!nxt) return false;
+        i--;//更新i
+    }
+
+    //return true;
+
+}
+
+//找到字符串出现的次数
+int count(string T) {
+    if (T.size() &gt; treesize)return 0;
+
+    //找到第一个结点
+    if (!tree[1].next[T[0]])return 0;
+    int nxt = tree[1].next[T[0]];
+
+    for (int i = 0; i &lt; T.size(); i++) {
+        for (int j = tree[nxt].start; j &lt; tree[nxt].end; j++) {
+            if (text[j] == T[i]) {
+                i++;
+                //遍历i结束
+                if (i == T.size()) {
+                    termnum = 0;
+                    numofleaf(nxt);
+                    return termnum;
+                }
+            }
+            else return 0;
+
+        }
+        //找到下一个节点
+        nxt = tree[nxt].next[T[i]];
+        if (!nxt) return 0;
+        i--;//更新i
+    }
+}
+
+//找到最长的重复子串
+void longstring() {
+    queue&lt;int&gt; qq;
+    queue&lt;int&gt; ans;
+    qq.push(1);
+    while (!qq.empty()) {
+        int node = qq.front();
+        qq.pop();
+
+        cout &lt;&lt; node-1 &lt;&lt; &quot;   node:&quot; &lt;&lt; endl;
+        for (int i = 0; i &lt; ALPHABET_SIZE; i++) {
+            if (tree[node].next[i] != 0 ) {
+                cout &lt;&lt; tree[node].next[i]-1&lt;&lt;&quot; &quot; ;
+                termnum = 0;
+                numofleaf(tree[node].next[i]);
+
+                if (termnum &lt; 2) continue;
+
+                qq.push(tree[node].next[i]);
+                tree[tree[node].next[i]].father = node;
+                ans.push(tree[node].next[i]);
+            }
+        }  
+        cout &lt;&lt; endl;
+    }
+
+    string ans1;
+    int num = 0;
+    int start1;
+    int end1;
+    int start2[256];
+    int end2[256];
+    start1 = 0;
+    end1 = 0;
+    while (!ans.empty()) {
+        int node = ans.front();
+        ans.pop();
+        start2[num] = tree[node].start;
+        end2[num] = tree[node].end;
+        while (tree[node].father != 1) {
+            node = tree[node].father;
+            start2[num] = tree[node].start;
+        }
+
+        if (end2[num] - start2[num] &gt; end1 - start1) {
+            start1 = start2[num];
+            end1 = end2[num];
+        }
+        num++;
+    }
+
+    //输出所有最长的重复子串
+    for (int i = 0; i &lt; num; i++) {
+        if ((end2[i] - start2[i]) == (end1 - start1)) {
+            for (int j = start2[i]; j &lt; end2[i]; j++) {
+                cout &lt;&lt; text[j];
+            }
+            cout &lt;&lt; endl;
+        }
+    }
+}
+
+};
+
+int main() {
+    string S, T;
+    S = &quot;abcabxnmhnmj$&quot;;
+    suffixtree t(S);
+
+    t.longstring();
+    while (1) {
+        cin &gt;&gt; T;
+        if (t.search(T)) {
+            cout &lt;&lt; &quot;YES&quot;;
+        }
+        else cout &lt;&lt; &quot;NO&quot;;
+        cout &lt;&lt; endl;
+        cout &lt;&lt; &quot;number:&quot; &lt;&lt; t.count(T) &lt;&lt; endl;
+    }
+
+}</code></pre>
+<h2 id="需要明确的问题"><a href="#需要明确的问题" class="headerlink" title="需要明确的问题"></a>需要明确的问题</h2><p>​        （理论层面</p>
+<ol>
+<li><p>后缀树的定义是什么？</p>
+</li>
+<li><p>后缀树能够高效解决哪些问题？</p>
+</li>
+<li><p>边和点的含义是什么？</p>
+</li>
+<li><p>隐式树和显示树各是什么？</p>
+</li>
+<li><p>（实现层面</p>
+</li>
+<li><p>三元组（活跃节点、活跃半径、活跃边）代表什么？</p>
+</li>
+<li><p>后缀链表是什么？</p>
+</li>
+<li><p>加边的时候的三个规则</p>
+</li>
+<li><p>‘$‘符号的意义？能不能用其他的代替’$‘？</p>
+</li>
+<li><p>举例一个过程,abcabcxabc$</p>
+</li>
+</ol>
+<h2 id="待更…"><a href="#待更…" class="headerlink" title="待更…"></a>待更…</h2>
+      </section>
+      <section class="extra">
+        
+        <ul class="copyright">
+  
+  <li><strong>本文作者：</strong>LiuShuo</li>
+  <li><strong>本文链接：</strong><a href="http://liushuo1999.github.io/2020/05/09/%E5%90%8E%E7%BC%80%E6%A0%91-Ukkonen%E7%AE%97%E6%B3%95/index.html">http://liushuo1999.github.io/2020/05/09/%E5%90%8E%E7%BC%80%E6%A0%91-Ukkonen%E7%AE%97%E6%B3%95/index.html</a></li>
+  <li><strong>版权声明：</strong>本博客所有文章均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
+      rel="external nofollow" target="_blank"> BY-NC-SA </a>许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        <section class="donate">
+  <div class="qrcode">
+    <img   class="lazyload" data-original="https://pic.izhaoo.com/alipay.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" >
+  </div>
+  <div class="icon">
+    <a href="javascript:;" id="alipay"><i class="iconfont iconalipay"></i></a>
+    <a href="javascript:;" id="wechat"><i class="iconfont iconwechat-fill"></i></a>
+  </div>
+</section>
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ukkonen/" rel="tag">Ukkonen</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%A0%91/" rel="tag">后缀树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+        
+<nav class="nav">
+  
+    <a href="/2020/05/09/%E8%A7%82%E3%80%8A%E7%BE%8E%E4%BA%BA%E9%B1%BC%E3%80%8B%E6%9C%89%E6%84%9F/"><i class="iconfont iconleft"></i>观《美人鱼》有感</a>
+  
+  
+    <a href="/2020/05/07/hello-world/">Hello World<i class="iconfont iconright"></i></a>
+  
+</nav>
+
+      </section>
+      
+      <section class="comments">
+  
+  <div class="btn" id="comments-btn">查看评论</div>
+  
+  
+</section>
+      
+    </section>
+  </div>
+</article>
+  </div>
+</main>
+  <footer class="footer">
+  <div class="footer-social">
+    
+    
+    
+    
+    
+    <a href="tencent://message/?Menu=yes&uin=894519210 " target="_blank" onMouseOver="this.style.color= '#12B7F5'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconQQ "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="javascript:; " target="_blank" onMouseOver="this.style.color= '#09BB07'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconwechat-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://www.instagram.com/izhaoo/ " target="_blank" onMouseOver="this.style.color= '#DA2E76'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconinstagram "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="https://github.com/izhaoo " target="_blank" onMouseOver="this.style.color= '#24292E'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  icongithub-fill "></i>
+    </a>
+    
+    
+    
+    
+    
+    <a href="mailto:izhaoo@163.com " target="_blank" onMouseOver="this.style.color='#FFBE5B'"
+      onMouseOut="this.style.color='#33333D'">
+      <i class="iconfont footer-social-item  iconmail"></i>
+    </a>
+    
+  </div>
+  <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  <div class="fab fab-daovoice">
+    <i class="iconfont iconcomment"></i>
+  </div>
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+</body>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+
+
+<script src="https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/modules.js"></script>
+<script src="/js/zui.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i["DaoVoiceObject"] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    a.charset = "utf-8";
+    m.parentNode.insertBefore(a, m)
+  })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+    "//widget.daovoice.io/widget/0f81ff2f.js", "daovoice")
+  daovoice('init', {
+    app_id: "abcdefg"
+  }, {
+    launcher: {
+      disableLauncherIcon: true,
+    },
+  });
+  daovoice('update');
+</script>
+
+
+
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?4c204d8bc027a0455b5fc642ac334ca8";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
