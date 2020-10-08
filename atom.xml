@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liushuo1999.github.io/"/>
-  <updated>2020-09-14T08:29:39.101Z</updated>
+  <updated>2020-10-08T07:33:57.173Z</updated>
   <id>http://liushuo1999.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://liushuo1999.github.io/2020/08/14/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/"/>
     <id>http://liushuo1999.github.io/2020/08/14/%E4%B8%AA%E4%BA%BA%E7%AE%80%E4%BB%8B/</id>
     <published>2020-08-14T07:27:18.000Z</published>
-    <updated>2020-09-14T08:29:39.101Z</updated>
+    <updated>2020-10-08T07:33:57.173Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://s1.ax1x.com/2020/08/14/dPSpm4.jpg" alt="刘硕"></p><h1 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h1><ul><li>手机：17852160895</li><li>Email：<a href="mailto:ls1114988147@foxmail.com">ls1114988147@foxmail.com</a></li><li>微信：ls1114988147</li><li>QQ：1114988147<h1 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h1></li><li>姓名:刘硕</li><li>性别：男</li><li>出生日期：1999-10-23</li><li>CSDN地址：<a href="https://blog.csdn.net/weixin_44552961" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44552961</a></li><li>高考：650<h1 id="教育经历"><a href="#教育经历" class="headerlink" title="教育经历"></a>教育经历</h1></li><li>朱刘中心幼儿园</li><li>朱刘中心小学</li><li>昌乐外国语学校</li><li>昌乐及第中学</li><li>山东大学：2018-&gt;今<h2 id="本科（待更"><a href="#本科（待更" class="headerlink" title="本科（待更"></a>本科（待更</h2>GPA：4.11<br>排名10/165<h2 id="优势科目"><a href="#优势科目" class="headerlink" title="优势科目"></a>优势科目</h2></li><li>线性代数：95</li><li>高等数学：97</li><li>数据库：98</li><li>数据结构：99</li><li>概率论与数理统计：99</li><li>体育：98<h1 id="校园经历"><a href="#校园经历" class="headerlink" title="校园经历"></a>校园经历</h1></li><li>2018-2019从文书院秘书处干事</li><li>2019全国大学生数学建模省二等奖</li><li>2019山东大学心理咨询室干事</li><li>2019.12-2020.4 Intel杯挺进复赛</li><li>2019年学业二等奖学金</li><li>2019年学业光华社会奖学金</li><li>2020美国大学生数学建模竞赛M奖</li><li>加入2018级菁英班</li><li>互联网＋校赛金奖</li><li>挑战杯省赛银奖<h1 id="科研经历"><a href="#科研经历" class="headerlink" title="科研经历"></a>科研经历</h1></li><li>山东大学计算研究所本科科研助手（区块链方向<h1 id="社会服务"><a href="#社会服务" class="headerlink" title="社会服务"></a>社会服务</h1></li><li>2019中国机器人大赛志愿者</li><li>2019年青岛市国际马拉松比赛志愿者</li><li>2019年计算机学院qrun趣跑参与者</li><li>2019校运会计算机学院志愿者</li><li>学代会志愿者</li><li>2019年海军节志愿者</li><li>环马志愿</li><li>从文书院年终晚会 </li><li>山东大学（青岛）图书馆贴馆标志愿活动</li></ul><p>（（（（待更</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -450,7 +450,7 @@ else return false;&lt;/code&gt;&lt;/pre&gt;
     <link href="http://liushuo1999.github.io/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/"/>
     <id>http://liushuo1999.github.io/2020/05/10/%E5%BE%85%E7%9C%8B%E7%94%B5%E5%BD%B1%E6%B8%85%E5%8D%95/</id>
     <published>2020-05-10T15:15:40.000Z</published>
-    <updated>2020-07-04T12:24:17.679Z</updated>
+    <updated>2020-10-08T07:33:43.287Z</updated>
     
     <content type="html"><![CDATA[<h1 id="电影清单"><a href="#电影清单" class="headerlink" title="电影清单"></a>电影清单</h1><p>《星际穿越》<br>《返老还童》</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
