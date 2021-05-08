@@ -4,27 +4,13 @@
   
     
     <entry>
-      <title>VertexColoring</title>
-      <link href="/2021/05/08/VertexColoring/"/>
-      <url>/2021/05/08/VertexColoring/</url>
+      <title>test</title>
+      <link href="/2021/05/08/test/"/>
+      <url>/2021/05/08/test/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>1、点着色问题是TDMA MAC 协议的基础。</p><p>2、点着色问题被用于打破对称性。（break symmetries，这是分布式计算的一个很重要的主题）</p></blockquote><a id="more"></a><p>TDMA：（时分多址）在一个无线频道上，按时间分割为若干个时隙，每个信道占用一个时隙，在规定的时隙内收发信号。</p><p>对称性破坏：</p><blockquote><p>问题1.1 （点着色问题）在无向图G（V,E）中，相邻的两个点的颜色不能相同。</p></blockquote><blockquote><p>定义1.4 彩色数字（Chromatic Number），能够解决问题1.1的最少的颜色数量即为该图的彩色数字。</p></blockquote><blockquote><p> 算法1.5 Greedy Sequential</p><pre><code> while(找到一个未着色的节点)     为该节点着色，颜色数字取k，且k是与所有已着色邻居节点不冲突的颜色数字最小的一个 end while</code></pre></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> DistributedComputing </category>
-          
-      </categories>
+        <content type="html"><![CDATA[<p><img src="/.io//figure1.png" alt="你想输入的替代文字"></p><img src="/.io//figure1.png"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
-        <tags>
-            
-            <tag> PODC </tag>
-            
-            <tag> distributed-computing </tag>
-            
-        </tags>
       
     </entry>
     
@@ -48,12 +34,12 @@
       <link href="/2021/05/07/Vertex-Coloring/"/>
       <url>/2021/05/07/Vertex-Coloring/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>1、点着色问题是TDMA MAC 协议的基础。</p><p>2、点着色问题被用于打破对称性。（break symmetries，这是分布式计算的一个很重要的主题）</p></blockquote><a id="more"></a><p>TDMA：（时分多址）在一个无线频道上，按时间分割为若干个时隙，每个信道占用一个时隙，在规定的时隙内收发信号。</p><p>对称性破坏：</p><blockquote><p>问题1.1 （点着色问题）在无向图G（V,E）中，相邻的两个点的颜色不能相同。</p></blockquote><blockquote><p>定义1.4 彩色数字（Chromatic Number），能够解决问题1.1的最少的颜色数量即为该图的彩色数字。</p></blockquote><blockquote><p> 算法1.5 Greedy Sequential</p><pre><code> while(找到一个未着色的节点)     为该节点着色，颜色数字取k，且k是与所有已着色邻居节点不冲突的颜色数字最小的一个 end while</code></pre></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>1、点着色问题是TDMA MAC 协议的基础。</p><p>2、点着色问题被用于打破对称性。（break symmetries，这是分布式计算的一个很重要的主题）</p></blockquote><a id="more"></a><p>TDMA：（时分多址）在一个无线频道上，按时间分割为若干个时隙，每个信道占用一个时隙，在规定的时隙内收发信号。</p><p>对称性破坏：</p><blockquote><p>问题1.1 （点着色问题）</p><p>在无向图G（V,E）中，相邻的两个点的颜色不能相同。</p></blockquote><blockquote><p>定义1.4 彩色数字（Chromatic Number）</p><p>能够解决问题1.1的最少的颜色数量即为该图的彩色数字。</p></blockquote><blockquote><p> 算法1.5 Greedy Sequential</p><pre><code> while(找到一个未着色的节点)     为该节点着色，颜色数字取k，且k是与所有已着色邻居节点不冲突的颜色数字最小的一个 end while</code></pre></blockquote><blockquote><p>定义1.6 度 </p><p> 顶点的度为顶点的所有邻居的个数，表示为δ（v）。图G的度为所有顶点中度数最大的，表示为△（G）=△。</p></blockquote><blockquote><p>定理1.7 </p><p>算法1.5是正确的，并且运行时间为n步，最多使用△+1个颜色。</p></blockquote><p>证明：每个节点最多有个邻居，所以最多有△+1个颜色。</p><blockquote><p>定义1.8  </p><p>同步分布式算法：在一个同步的分布式算法中，节点操作按轮进行，每轮中，节点执行以下操作：</p><p>1、发送消息给图中的邻居</p><p>2、接收邻居发来的消息</p><p>3、做本地运算</p></blockquote><table><tbody><tr><td bgcolor="#7FFFD4">针对算法1.5的分布式的版本</td></tr></tbody></table><blockquote><p>算法1.9</p><p>假定每个节点都有IDs</p><p>1、每个节点发送自己的ID给所有的邻居节点；</p><p>2、每个节点收到所有的邻居的ID；</p><pre><code>while(节点v找到一个没有染色的邻居节点，且其ID比自己高)    1、节点v告诉所有的邻居，v节点undecided，即发送信息“undecided”    2、节点v接收所有邻居的颜色决策end while</code></pre><p>3、节点v选择所允许的颜色中标号最小的一个；</p><p>4、节点v通知所有的邻居它的决策。</p></blockquote><img src="https://z3.ax1x.com/2021/05/08/gGzeaj.png"><blockquote><p>定义1.11 Time Complexity</p><p>同步性算法的时间复杂度是算法结束所用的轮数；</p><p>当最后一个节点结束时，整个算法结束。</p></blockquote><blockquote><p>定理1.12</p><p>算法1.9是正确的，并且时间复杂度是n，算法最多用△+1个颜色。</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
           
-          <category> distributed-computing </category>
+          <category> distributed computing </category>
           
       </categories>
       
@@ -62,7 +48,7 @@
             
             <tag> PODC </tag>
             
-            <tag> distributed-computing </tag>
+            <tag> distributed computing </tag>
             
         </tags>
       
